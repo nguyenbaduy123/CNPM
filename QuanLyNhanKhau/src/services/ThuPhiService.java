@@ -45,4 +45,18 @@ public class ThuPhiService {
         }
         return list;
     }
+     public boolean addNew(KhoanThuBean khoanThuBean) throws ClassNotFoundException, SQLException{
+         Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "INSERT INTO khoan_thu(tenKhoanThu, soTien, loaiKhoanThu)" 
+                    + " values (?, ?, ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        preparedStatement.setString(1, khoanThuBean.getKhoanThuModel().getTenKhoanThu());
+        preparedStatement.setInt(2, khoanThuBean.getKhoanThuModel().getSoTien());
+        preparedStatement.setInt(3, khoanThuBean.getKhoanThuModel().getLoaiKhoanThu());
+
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+        connection.close();
+        return true;
+    }
 }
