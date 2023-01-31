@@ -6,13 +6,23 @@ package Bean;
 import java.util.ArrayList;
 import java.util.List;
 import models.KhoanThuModel;
+import models.NopTienModel;
 /**
  *
  * @author Duy
  */
 public class KhoanThuBean {
     private KhoanThuModel khoanThuModel;
+    private NopTienModel nopTienModel;
 //    private List<KhoanThuModel> listKhoanThu;
+
+    public void setNopTienModel(NopTienModel nopTienModel) {
+        this.nopTienModel = nopTienModel;
+    }
+
+    public NopTienModel getNopTienModel() {
+        return nopTienModel;
+    }
 
     public KhoanThuBean(KhoanThuModel khoanThuModel) {
         this.khoanThuModel = khoanThuModel;
@@ -31,6 +41,7 @@ public class KhoanThuBean {
 
     public KhoanThuBean() {
         this.khoanThuModel = new KhoanThuModel();
+        this.nopTienModel = new NopTienModel();
     }
     
     

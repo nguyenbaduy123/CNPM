@@ -11,10 +11,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.EventObject;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,6 +26,8 @@ import javax.swing.table.TableModel;
 import services.ThuPhiService;
 import utility.TableModelThuPhi;
 import views.infoViews.InfoJframe;
+import javax.swing.JOptionPane;
+import models.NopTienModel;
 
 /**
  *
@@ -32,9 +38,12 @@ public class NopTienController {
     private JPanel tableTopJpn;
     private JPanel tableBotJpn;
     private JPanel tableRightJpn;
+    private int idKhoanThu;
     private JTextField tenKhoanThuJft;
     private JTextField soTienJft;
     private JTextField loaiKhoanThuJft;
+    private JButton cancelBtn;
+    private JButton acceptBtn;
     private final ThuPhiService thuPhiService = new ThuPhiService();
     private final TableModelThuPhi tableModelThuPhi = new TableModelThuPhi();
     private JFrame nopTienJFrame;
@@ -42,6 +51,7 @@ public class NopTienController {
     private List<KhoanThuBean> listKhoanThu;
     private final String[] COLUNMS = {"Tên khoản thu", "Số tiền", "Loại khoản thu"};
     private KhoanThuBean khoanThuSelected;
+    private KhoanThuBean nopTienBean = new KhoanThuBean();
 
     public NopTienController(JFrame nopTienJFrame) {
         this.nopTienJFrame = nopTienJFrame;
@@ -50,6 +60,31 @@ public class NopTienController {
     public void init() {
         listKhoanThu = this.thuPhiService.getListKhoanThu();
         setData();
+        acceptBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (tenKhoanThuJft.getText().trim().isEmpty() 
+                        || soTienJft.getText().trim().isEmpty() 
+                        || loaiKhoanThuJft.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!");
+                } else {
+                    try {
+                        int idNguoiNop = thuPhiService.getIdByCmt(soCmtJtf.getText().trim());
+                        nopTienBean.getNopTienModel().setIdNguoiNop(idNguoiNop);
+                        nopTienBean.getNopTienModel().setIdKhoanThu(idKhoanThu);
+                        thuPhiService.nopTien(nopTienBean);
+//                    TachHoKhau tachHoKhau = (TachHoKhau)tachHoKhauJFrame;
+//                    tachHoKhau.getParentJFrame().setEnabled(true);
+//                    nopTien.dispose();
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(NopTienController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(NopTienController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            
+        });
     }
     
     public void setData() {
@@ -78,7 +113,16 @@ public class NopTienController {
                 } else {
                     // selected data
                     khoanThuSelected = temp;
+                    idKhoanThu = khoanThuSelected.getKhoanThuModel().getId();
                     tenKhoanThuJft.setText(khoanThuSelected.getKhoanThuModel().getTenKhoanThu());
+                    int soTien = khoanThuSelected.getKhoanThuModel().getSoTien();
+                    soTienJft.setText(Integer.toString(soTien));
+                    int loaiKhoanThu = khoanThuSelected.getKhoanThuModel().getLoaiKhoanThu();
+                    if(loaiKhoanThu == 0) {
+                        loaiKhoanThuJft.setText("Tự nguyện");
+                    } else {
+                        loaiKhoanThuJft.setText("Bắt buộc");
+                    }
                 }
             }
             
@@ -96,6 +140,22 @@ public class NopTienController {
 
     public JTextField getSoCmtJtf() {
         return soCmtJtf;
+    }
+
+    public void setCancelBtn(JButton cancelBtn) {
+        this.cancelBtn = cancelBtn;
+    }
+
+    public void setAcceptBtn(JButton acceptBtn) {
+        this.acceptBtn = acceptBtn;
+    }
+
+    public JButton getCancelBtn() {
+        return cancelBtn;
+    }
+
+    public JButton getAcceptBtn() {
+        return acceptBtn;
     }
 
     public JPanel getTableTopJpn() {
@@ -185,4 +245,13 @@ public class NopTienController {
     public void setKhoanThuSelected(KhoanThuBean khoanThuSelected) {
         this.khoanThuSelected = khoanThuSelected;
     }
+
+    public int getIdKhoanThu() {
+        return idKhoanThu;
+    }
+
+    public void setIdKhoanThu(int idKhoanThu) {
+        this.idKhoanThu = idKhoanThu;
+    }
+
 }

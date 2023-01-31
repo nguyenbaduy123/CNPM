@@ -38,9 +38,16 @@ public class NopTien extends javax.swing.JFrame {
 //        controller.setTableBotJpn(tableBotJpn);
 //        controller.setTableRightJpn(tableRigthJtf);
         controller.setTableTopJpn(tableTopJpn);
+        controller.setTenKhoanThuJft(tenKhoanThuJtf);
+        controller.setSoTienJft(soTienJtf);
+        controller.setLoaiKhoanThuJft(loaiKhoanThuJtf);
+        controller.setAcceptBtn(acceptBtn);
+        controller.setCancelBtn(cancelBtn);
+        controller.setSoCmtJtf(soCmtJtf);
         controller.init();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,8 +60,6 @@ public class NopTien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        saveBtn = new javax.swing.JButton();
-        cancelBtn = new javax.swing.JButton();
         tableTopJpn = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         loaiKhoanThuJtf = new javax.swing.JTextField();
@@ -65,6 +70,8 @@ public class NopTien extends javax.swing.JFrame {
         soCmtJtf = new javax.swing.JTextField();
         checkBtn = new javax.swing.JButton();
         availableIcon = new javax.swing.JLabel();
+        acceptBtn = new javax.swing.JButton();
+        cancelBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,20 +82,6 @@ public class NopTien extends javax.swing.JFrame {
         jLabel2.setText("Chọn khoản thu:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-
-        saveBtn.setText("Lưu");
-        saveBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveBtnActionPerformed(evt);
-            }
-        });
-
-        cancelBtn.setText("Hủy");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
-            }
-        });
 
         tableTopJpn.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -139,6 +132,20 @@ public class NopTien extends javax.swing.JFrame {
         availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png"))); // NOI18N
         availableIcon.setEnabled(false);
 
+        acceptBtn.setText("Xác nhận");
+        acceptBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceptBtnActionPerformed(evt);
+            }
+        });
+
+        cancelBtn.setText("Hủy");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,9 +155,9 @@ public class NopTien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(acceptBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -214,44 +221,13 @@ public class NopTien extends javax.swing.JFrame {
                                     .addComponent(loaiKhoanThuJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cancelBtn)
-                            .addComponent(saveBtn))
+                            .addComponent(acceptBtn)
+                            .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-//        if (this.tenKhoanThuJtf.getText().trim().isEmpty()
-//            || this.soTienJtf.getText().trim().isEmpty())
-////            || this.loaiKhoanThuJtf.getText().trim().isEmpty()) 
-//                {
-//            JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các thông tin bắt buộc", "Warning", JOptionPane.ERROR_MESSAGE);
-//        } else {
-//            this.khoanThuBean.getKhoanThuModel().setTenKhoanThu(tenKhoanThuJtf.getText().trim());
-//            this.khoanThuBean.getKhoanThuModel().setSoTien(Integer.parseInt(soTienJtf.getText().trim()));
-////            this.hoKhauBean.getHoKhauModel().setDiaChi(diaChiJtf.getText().trim());
-//            int loaiKhoanThu = 0;
-//            if(loaiKhoanThuJcb.getSelectedItem().toString().equals("Tự Nguyện")) {
-//                loaiKhoanThu = 0;
-//            } else {
-//                loaiKhoanThu = 1;
-//            }
-//            this.khoanThuBean.getKhoanThuModel().setLoaiKhoanThu(loaiKhoanThu);
-//            try {
-//                this.controller.addNew(khoanThuBean);
-//                this.parentJFrame.setEnabled(true);
-//                dispose();
-//            } catch (Exception e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
-    }//GEN-LAST:event_saveBtnActionPerformed
-
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        close();
-    }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void soTienJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soTienJtfActionPerformed
         // TODO add your handling code here:
@@ -275,6 +251,14 @@ public class NopTien extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_checkBtnActionPerformed
+
+    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acceptBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        close();
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     private boolean checkCMT(String cmt) {
         if (cmt.trim().isEmpty()) {
@@ -305,6 +289,7 @@ public class NopTien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton acceptBtn;
     private javax.swing.JLabel availableIcon;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JButton checkBtn;
@@ -315,7 +300,6 @@ public class NopTien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField loaiKhoanThuJtf;
-    private javax.swing.JButton saveBtn;
     private javax.swing.JTextField soCmtJtf;
     private javax.swing.JTextField soTienJtf;
     private javax.swing.JPanel tableTopJpn;

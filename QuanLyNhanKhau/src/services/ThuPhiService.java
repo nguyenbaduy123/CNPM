@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import Bean.KhoanThuBean;
 import models.KhoanThuModel;
+import models.NopTienModel;
 /**
  *
  * @author Duy
@@ -59,4 +60,28 @@ public class ThuPhiService {
         connection.close();
         return true;
     }
+     public int getIdByCmt(String cmt) throws ClassNotFoundException, SQLException {
+         Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT idNhanKhau FROM chung_minh_thu WHERE soCMT=" + cmt;
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery(query);
+        int x = 0;
+        while (rs.next()) {
+            x = rs.getInt(1);
+            System.out.println(x);
+        }       
+        return x;
+     }
+     public boolean nopTien(KhoanThuBean nopTienBean) throws ClassNotFoundException, SQLException{
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "INSERT INTO nop_tien(idNguoiNop, idKhoanThu, ngayNop)" 
+                    + " values (?, ?, NOW())";
+        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        preparedStatement.setInt(1, nopTienBean.getNopTienModel().getIdNguoiNop());
+        preparedStatement.setInt(2, nopTienBean.getNopTienModel().getIdKhoanThu());
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+        connection.close();
+         return true;
+     }
 }
