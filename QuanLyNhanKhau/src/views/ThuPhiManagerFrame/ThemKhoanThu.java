@@ -16,13 +16,11 @@ import  javax.swing.JButton;
  */
 public class ThemKhoanThu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ThemMoiKhoanThu
-     */
     private JFrame parentJFrame;
     private KhoanThuBean khoanThuBean = new KhoanThuBean();
     private final AddKhoanThuController controller = new AddKhoanThuController();
     public ThemKhoanThu(JFrame parentJFrame) {
+        setTitle("Thêm khoản thu");
         initComponents();
         this.parentJFrame = parentJFrame;
         parentJFrame.setEnabled(false);

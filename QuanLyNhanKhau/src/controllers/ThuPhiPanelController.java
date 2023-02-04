@@ -2,6 +2,7 @@ package controllers;
 
 import Bean.HoKhauBean;
 import Bean.KhoanThuBean;
+import Bean.NhanKhauBean;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,13 +12,10 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import models.KhoanThuModel;
 import services.ThuPhiService;
@@ -70,9 +68,41 @@ public class ThuPhiPanelController {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 1) {
                     KhoanThuBean temp = list.get(table.getSelectedRow());
-                    InfoJframe infoJframe = new InfoJframe(temp.toString(), parentJFrame);
-                    infoJframe.setLocationRelativeTo(null);
-                    infoJframe.setVisible(true);
+                    int idKhoanThuSelected = temp.getKhoanThuModel().getId();
+                    JFrame nopTienJFrame = new JFrame();
+                    nopTienJFrame.setTitle("Danh sách người đã nộp khoản thu này");
+                    nopTienJFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    nopTienJFrame.setPreferredSize(new Dimension(500, 400));
+                    nopTienJFrame.pack();
+                    nopTienJFrame.setLocationRelativeTo(null);
+                    nopTienJFrame.setVisible(true);
+                    List<NhanKhauBean> listNopTien = thuPhiService.getListNopTienKhoan(idKhoanThuSelected);
+                    String COLUNMSNopTien[] = {"STT", "Tên người nộp", "Ngày sinh"}; 
+                    DefaultTableModel model = tableModelThuPhi.setTableNopTien(listNopTien, COLUNMSNopTien);
+
+                    JTable tableNopTien = new JTable(model) {
+                        @Override
+                        public boolean editCellAt(int row, int column, EventObject e) {
+                            return false;
+                        }
+
+                    };
+                    tableNopTien.getColumnModel().getColumn(0).setPreferredWidth(4);
+                    tableNopTien.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+                    tableNopTien.getTableHeader().setPreferredSize(new Dimension(100, 50));
+                    tableNopTien.setRowHeight(50);
+                    tableNopTien.validate();
+                    tableNopTien.repaint();
+                    tableNopTien.setFont(new Font("Arial", Font.PLAIN, 14));
+                    JPanel tableNopTienJpn = new JPanel();
+                    JScrollPane scroll = new JScrollPane();
+                    scroll.getViewport().add(tableNopTien);
+                    nopTienJFrame.getContentPane().add(tableNopTienJpn);
+                    tableNopTienJpn.removeAll();
+                    tableNopTienJpn.setLayout(new BorderLayout());
+                    tableNopTienJpn.add(scroll);
+                    tableNopTienJpn.validate();
+                    tableNopTienJpn.repaint();
                 }
             }
             
