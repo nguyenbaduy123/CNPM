@@ -24,6 +24,7 @@ public class ChuyenDiNoiKhac extends javax.swing.JFrame {
         initComponents();
         this.hoKhauBean = new HoKhauBean();
         this.parentJFrame = parentJFrame;
+        setTitle("Đăng ký chuyển đi nơi khác");
         this.parentJFrame.setEnabled(false);
         controller = new ChuyenDiNoiKhacController(hoKhauBean, searchJtf, tableJpn);
         controller.setDataJtf(maHoKhauJtf, tenChuHoJtf, maKhuVucJtf, diaChiHienTaiJtf);

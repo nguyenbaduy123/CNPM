@@ -7,6 +7,8 @@ import Bean.KhoanThuBean;
 import Bean.NhanKhauBean;
 import controllers.NhanKhauManagerController.DangKyTamTruController;
 import controllers.ThuPhiManagerController.NopTienController;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -45,8 +47,23 @@ public class NopTien extends javax.swing.JFrame {
         controller.setCancelBtn(cancelBtn);
         controller.setSoCmtJtf(soCmtJtf);
         controller.init();
+        
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                parentJFrame.setEnabled(true);
+                close();
+            }
+            
+        });
     }
-
+    
+    private void close() {
+        if (JOptionPane.showConfirmDialog(this, "Are you sure to close??", "Confirm", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+            this.parentJFrame.setEnabled(true);
+            dispose();
+        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -286,12 +303,7 @@ public class NopTien extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-    private void close() {
-        if (JOptionPane.showConfirmDialog(this, "Are you sure to close??", "Confirm", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            this.parentJFrame.setEnabled(true);
-            dispose();
-        }
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptBtn;

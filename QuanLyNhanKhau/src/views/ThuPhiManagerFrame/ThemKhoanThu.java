@@ -5,6 +5,8 @@
 package views.ThuPhiManagerFrame;
 import Bean.KhoanThuBean;
 import controllers.ThuPhiManagerController.AddKhoanThuController;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -24,6 +26,15 @@ public class ThemKhoanThu extends javax.swing.JFrame {
         initComponents();
         this.parentJFrame = parentJFrame;
         parentJFrame.setEnabled(false);
+        
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                parentJFrame.setEnabled(true);
+                close();
+            }
+            
+        });
     }
 
     /**

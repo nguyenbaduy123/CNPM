@@ -25,6 +25,7 @@ public class DangKyTamVangJFrame extends javax.swing.JFrame {
     public DangKyTamVangJFrame(JFrame parentJFrame) {
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setTitle("Đăng ký tạm vắng");
         controller = new DangKyTamVangController();
         this.parentJFrame = parentJFrame;
         parentJFrame.setEnabled(false);

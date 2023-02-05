@@ -20,6 +20,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
         initComponents();
         this.parentJFrame = parentJFrame;
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setTitle("Khai tử");
         parentJFrame.setEnabled(false);
         
         this.addWindowListener(new WindowAdapter() {
