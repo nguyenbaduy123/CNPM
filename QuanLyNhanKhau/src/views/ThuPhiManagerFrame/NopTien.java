@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import  javax.swing.JButton;
+import javax.swing.JButton;
 import models.NopTienModel;
 import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
 /**
@@ -20,9 +20,8 @@ import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
  */
 public class NopTien extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ThemMoiKhoanThu
-     */
+
+    
     private JFrame parentJFrame;
     private DangKyTamTruController tamTruController = new DangKyTamTruController();
     private KhoanThuBean khoanThuBean = new KhoanThuBean();
@@ -31,6 +30,7 @@ public class NopTien extends javax.swing.JFrame {
     private NopTienController controller;
     
     public NopTien(JFrame parentJFrame) {
+        setTitle("Nộp Tiền");
         initComponents();
         this.parentJFrame = parentJFrame;
         parentJFrame.setEnabled(false);
@@ -255,7 +255,10 @@ public class NopTien extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBtnActionPerformed
 
     private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
-        // TODO add your handling code here:
+                // TODO add your handling code here:
+                soCmtJtf.setEnabled(true);
+                checkBtn.setEnabled(true);
+                availableIcon.setEnabled(false);
     }//GEN-LAST:event_acceptBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
