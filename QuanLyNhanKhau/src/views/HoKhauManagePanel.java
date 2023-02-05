@@ -43,10 +43,10 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
         tachHoKhauBtn = new javax.swing.JButton();
         chuyenDiBtn = new javax.swing.JButton();
         tableJpn = new javax.swing.JPanel();
+        Kinh_lup = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        themMoiBtn.setBackground(new java.awt.Color(255, 255, 255));
         themMoiBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         themMoiBtn.setText("Thêm mới");
         themMoiBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +62,6 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
             }
         });
 
-        tachHoKhauBtn.setBackground(new java.awt.Color(255, 255, 255));
         tachHoKhauBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         tachHoKhauBtn.setText("Tách HK");
         tachHoKhauBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +70,6 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
             }
         });
 
-        chuyenDiBtn.setBackground(new java.awt.Color(255, 255, 255));
         chuyenDiBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         chuyenDiBtn.setText("Chuyển đi");
         chuyenDiBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -84,27 +82,32 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
         tableJpn.setLayout(tableJpnLayout);
         tableJpnLayout.setHorizontalGroup(
             tableJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 707, Short.MAX_VALUE)
+            .addGap(0, 663, Short.MAX_VALUE)
         );
         tableJpnLayout.setVerticalGroup(
             tableJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        Kinh_lup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Kinh_lup.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tableJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tachHoKhauBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(chuyenDiBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(themMoiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(Kinh_lup)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -113,7 +116,9 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(Kinh_lup, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -155,6 +160,7 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Kinh_lup;
     private javax.swing.JButton chuyenDiBtn;
     private javax.swing.JTextField jtfSearch;
     private javax.swing.JPanel tableJpn;

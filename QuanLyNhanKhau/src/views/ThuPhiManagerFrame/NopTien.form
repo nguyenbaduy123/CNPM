@@ -233,7 +233,7 @@
     <Component class="javax.swing.JButton" name="checkBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
+          <Font name="Arial" size="14" style="2"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Check"/>
       </Properties>
@@ -251,6 +251,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="acceptBtn">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="X&#xe1;c nh&#x1ead;n"/>
       </Properties>
       <Events>
@@ -259,6 +262,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="cancelBtn">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
       </Properties>
       <Events>

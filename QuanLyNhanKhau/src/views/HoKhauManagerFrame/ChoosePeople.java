@@ -96,6 +96,7 @@ public class ChoosePeople extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
+        confirmBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmBtn.setText("Xác nhận");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +104,7 @@ public class ChoosePeople extends javax.swing.JFrame {
             }
         });
 
+        cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cancelBtn.setText("Hủy");
         cancelBtn.setToolTipText("");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {

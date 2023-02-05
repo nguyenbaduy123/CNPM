@@ -168,8 +168,7 @@ public class AddNewPeopleJFrame extends javax.swing.JFrame {
             }
         });
 
-        CreateBtn.setBackground(new java.awt.Color(255, 255, 255));
-        CreateBtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CreateBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         CreateBtn.setText("Create");
         CreateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,8 +176,7 @@ public class AddNewPeopleJFrame extends javax.swing.JFrame {
             }
         });
 
-        CancelBtn.setBackground(new java.awt.Color(255, 255, 255));
-        CancelBtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CancelBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         CancelBtn.setText("Cancel");
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

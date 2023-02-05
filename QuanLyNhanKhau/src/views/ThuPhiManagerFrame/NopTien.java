@@ -121,7 +121,7 @@ public class NopTien extends javax.swing.JFrame {
 
         soCmtJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        checkBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        checkBtn.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         checkBtn.setText("Check");
         checkBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +132,7 @@ public class NopTien extends javax.swing.JFrame {
         availableIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/checked.png"))); // NOI18N
         availableIcon.setEnabled(false);
 
+        acceptBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         acceptBtn.setText("Xác nhận");
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +140,7 @@ public class NopTien extends javax.swing.JFrame {
             }
         });
 
+        cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cancelBtn.setText("Hủy");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

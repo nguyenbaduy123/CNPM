@@ -108,7 +108,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
         removeBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         removeBtn.setText("<<");
 
-        saveBtn.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        saveBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         saveBtn.setText("Lưu thay đổi");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
