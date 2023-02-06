@@ -108,6 +108,10 @@ public class NopTienController {
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if(soCmtJtf.getText().trim().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Mời bạn nhập Chứng minh thư trước", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 KhoanThuBean temp = listKhoanThu.get(table.getSelectedRow());
                 if (e.getClickCount() > 1) {
                     InfoJframe infoJframe = new InfoJframe(temp.toString(), nopTienJFrame);
@@ -124,7 +128,7 @@ public class NopTienController {
                     } catch (SQLException ex) {
                         Logger.getLogger(NopTienController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                        soNhanKhau = thuPhiService.getNumberOfMember(idNguoiNop);
+                    soNhanKhau = thuPhiService.getNumberOfMember(idNguoiNop);
                     soNhanKhauJtf.setText(soNhanKhau + "");
                     idKhoanThu = khoanThuSelected.getKhoanThuModel().getId();
                     tenKhoanThuJft.setText(khoanThuSelected.getKhoanThuModel().getTenKhoanThu());
