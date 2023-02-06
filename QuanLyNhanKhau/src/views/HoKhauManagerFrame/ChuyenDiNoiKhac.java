@@ -22,6 +22,7 @@ public class ChuyenDiNoiKhac extends javax.swing.JFrame {
      */
     public ChuyenDiNoiKhac(JFrame parentJFrame) {
         initComponents();
+        setTitle("Chuyển đi");
         this.hoKhauBean = new HoKhauBean();
         this.parentJFrame = parentJFrame;
         this.parentJFrame.setEnabled(false);

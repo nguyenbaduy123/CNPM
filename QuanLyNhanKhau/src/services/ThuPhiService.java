@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package services;
+import Bean.HoKhauBean;
 import controllers.LoginController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import Bean.KhoanThuBean;
 import Bean.NhanKhauBean;
+import models.HoKhauModel;
 import models.KhoanThuModel;
 import models.NhanKhauModel;
 import models.NopTienModel;
@@ -87,11 +89,12 @@ public class ThuPhiService {
             connection.close();
             return false;
         }
-        query = "INSERT INTO nop_tien(idNguoiNop, idKhoanThu, ngayNop)" 
-                    + " values (?, ?, NOW())";
+        query = "INSERT INTO nop_tien(idNguoiNop, idKhoanThu, ngayNop, soTien)" 
+                    + " values (?, ?, NOW(), ?)";
         preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setInt(1, nopTienBean.getNopTienModel().getIdNguoiNop());
         preparedStatement.setInt(2, nopTienBean.getNopTienModel().getIdKhoanThu());
+        preparedStatement.setInt(3, nopTienBean.getNopTienModel().getSoTien());
         preparedStatement.executeUpdate();
         preparedStatement.close();
         connection.close();
@@ -99,21 +102,23 @@ public class ThuPhiService {
         return true;
      }
      
-     public List<NhanKhauBean> getListNopTienKhoan(int idKhoanThu) {
-        List<NhanKhauBean> list = new ArrayList<>();
+     public List<HoKhauBean> getListNopTienKhoan(int idKhoanThu) {
+        List<HoKhauBean> list = new ArrayList<>();
         
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            String query = "SELECT nk.hoTen, nk.namSinh FROM nhan_khau nk "
-                    + "INNER JOIN nop_tien nt ON nt.idNguoiNop = nk.ID "
+            String query = "SELECT hk.maHoKhau, nk.hoTen, nt.soTien FROM nhan_khau nk "
+                    + "INNER JOIN nop_tien nt ON nt.idNguoiNop = nk.id "
+                    + "INNER JOIN thanh_vien_cua_ho tvch ON tvch.idNhanKhau = nk.id "
+                    + "INNER JOIN ho_khau hk ON hk.id = tvch.idHoKhau "
                     + "WHERE nt.idKhoanThu = " + idKhoanThu;
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
-                NhanKhauBean temp = new NhanKhauBean();
-                NhanKhauModel nhanKhauModel = temp.getNhanKhauModel();
-                nhanKhauModel.setHoTen(rs.getString(1));
-                nhanKhauModel.setNamSinh(rs.getDate(2));
+                HoKhauBean temp = new HoKhauBean();
+                temp.getHoKhauModel().setMaHoKhau(rs.getString(1));
+                temp.getChuHo().setHoTen(rs.getString(2));
+                temp.getNopTienModel().setSoTien(rs.getInt(3));
                 list.add(temp);
             }
             preparedStatement.close();
@@ -123,4 +128,23 @@ public class ThuPhiService {
         }
         return list;
     }
+     public int getNumberOfMember(int idNhanKhau) {
+         int count = 0;
+         try {
+             Connection connection = MysqlConnection.getMysqlConnection();
+             String query = "SELECT COUNT(*) FROM thanh_vien_cua_ho tvch "
+                     + "WHERE idHoKhau = (SELECT idHoKhau FROM thanh_vien_cua_ho tvch2 WHERE tvch2.idNhanKhau = " + idNhanKhau +")";
+             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+            } 
+         } catch (SQLException ex) {
+             Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return count;
+     }
+     
 }

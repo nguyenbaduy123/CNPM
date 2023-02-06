@@ -8,6 +8,7 @@ import controllers.SignupController;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +34,10 @@ public class SignupUI extends javax.swing.JFrame {
         String userName = txbUserName.getText();
         String password = String.valueOf(txbPasswd.getPassword());
         String rePassword = String.valueOf(txbRePasswd.getPassword());
+        if(userName.equals("") || password.equals("") || rePassword.equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Yêu cầu nhập đủ các trường cần thiết", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         boolean check = false;
         try {
             check = this.controller.signup(userName, password, rePassword);

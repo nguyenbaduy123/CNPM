@@ -39,9 +39,11 @@ public class NopTienController {
     private JPanel tableBotJpn;
     private JPanel tableRightJpn;
     private int idKhoanThu;
+    private int soNhanKhau;
     private JTextField tenKhoanThuJft;
     private JTextField soTienJft;
     private JTextField loaiKhoanThuJft;
+    private JTextField soNhanKhauJtf;
     private JButton cancelBtn;
     private JButton acceptBtn;
     private final ThuPhiService thuPhiService = new ThuPhiService();
@@ -72,6 +74,7 @@ public class NopTienController {
                         int idNguoiNop = thuPhiService.getIdByCmt(soCmtJtf.getText().trim());
                         nopTienBean.getNopTienModel().setIdNguoiNop(idNguoiNop);
                         nopTienBean.getNopTienModel().setIdKhoanThu(idKhoanThu);
+                        nopTienBean.getNopTienModel().setSoTien(Integer.parseInt(soTienJft.getText()));
                         thuPhiService.nopTien(nopTienBean);
 //                    TachHoKhau tachHoKhau = (TachHoKhau)tachHoKhauJFrame;
 //                    tachHoKhau.getParentJFrame().setEnabled(true);
@@ -113,14 +116,27 @@ public class NopTienController {
                 } else {
                     // selected data
                     khoanThuSelected = temp;
+                    int idNguoiNop = 0;
+                    try {
+                        idNguoiNop = thuPhiService.getIdByCmt(soCmtJtf.getText().trim());
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(NopTienController.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(NopTienController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                        soNhanKhau = thuPhiService.getNumberOfMember(idNguoiNop);
+                    soNhanKhauJtf.setText(soNhanKhau + "");
                     idKhoanThu = khoanThuSelected.getKhoanThuModel().getId();
                     tenKhoanThuJft.setText(khoanThuSelected.getKhoanThuModel().getTenKhoanThu());
                     int soTien = khoanThuSelected.getKhoanThuModel().getSoTien();
-                    soTienJft.setText(Integer.toString(soTien));
                     int loaiKhoanThu = khoanThuSelected.getKhoanThuModel().getLoaiKhoanThu();
                     if(loaiKhoanThu == 0) {
+                        soTienJft.setEditable(true);
                         loaiKhoanThuJft.setText("Tự nguyện");
                     } else {
+                        soTienJft.setEnabled(true);
+                        soTienJft.setEditable(false);
+                        soTienJft.setText(Integer.toString(soTien*soNhanKhau));
                         loaiKhoanThuJft.setText("Bắt buộc");
                     }
                 }
@@ -148,6 +164,10 @@ public class NopTienController {
 
     public void setAcceptBtn(JButton acceptBtn) {
         this.acceptBtn = acceptBtn;
+    }
+
+    public void setSoNhanKhauJtf(JTextField soNhanKhauJtf) {
+        this.soNhanKhauJtf = soNhanKhauJtf;
     }
 
     public JButton getCancelBtn() {

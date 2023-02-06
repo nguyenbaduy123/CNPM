@@ -30,6 +30,7 @@ public class ThemMoiHoKhau extends javax.swing.JFrame {
      */
     public ThemMoiHoKhau(JFrame parentJFrame) {
         initComponents();
+        setTitle("Thêm hộ khẩu");
         this.parentJFrame = parentJFrame;
         parentJFrame.setEnabled(false);
         this.addWindowListener(new WindowAdapter() {

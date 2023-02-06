@@ -31,8 +31,10 @@ public class SignupController {
             JOptionPane.showMessageDialog(null, "Tên tài khoản đã tồn tại", "ERROR", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        else {                
-            st.execute("INSERT INTO users(userName, passwd) VALUES('" + userName + "', '" + password +"')");
+        else {
+            currentUser.setUserName(userName);
+            currentUser.setPasswd(password);
+            st.execute("INSERT INTO users(userName, passwd) VALUES('" + currentUser.getUserName() + "', '" + currentUser.getPasswd() +"')");
             connection.close();
             JOptionPane.showMessageDialog(null, "Chúc mừng bạn đã đăng ký tài khoản thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
             return true;

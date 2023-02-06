@@ -12,6 +12,15 @@ public class NopTienModel {
     private int idNguoiNop;
     private int idKhoanThu;
     private String ngayThu;
+    private int soTien;
+
+    public void setSoTien(int soTien) {
+        this.soTien = soTien;
+    }
+
+    public int getSoTien() {
+        return soTien;
+    }
 
     public NopTienModel() {
     }

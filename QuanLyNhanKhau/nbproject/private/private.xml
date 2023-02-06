@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/views/ThuPhiPanel.java</file>
-            <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/views/MainFrame.java</file>
+            <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/controllers/SignupController.java</file>
+            <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/controllers/LoginController.java</file>
+            <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/services/MysqlConnection.java</file>
+            <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/views/SignupUI.java</file>
+            <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/models/UserMoldel.java</file>
             <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/views/HoKhauManagePanel.java</file>
             <file>file:/C:/Users/Duy/workspace/CNPM/QuanLyNhanKhau/src/views/LoginUI.java</file>
         </group>

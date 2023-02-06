@@ -70,14 +70,14 @@ public class ThuPhiPanelController {
                     KhoanThuBean temp = list.get(table.getSelectedRow());
                     int idKhoanThuSelected = temp.getKhoanThuModel().getId();
                     JFrame nopTienJFrame = new JFrame();
-                    nopTienJFrame.setTitle("Danh sách người đã nộp khoản thu này");
+                    nopTienJFrame.setTitle("Danh sách hộ đã nộp khoản thu này");
                     nopTienJFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    nopTienJFrame.setPreferredSize(new Dimension(500, 400));
+                    nopTienJFrame.setPreferredSize(new Dimension(800, 400));
                     nopTienJFrame.pack();
                     nopTienJFrame.setLocationRelativeTo(null);
                     nopTienJFrame.setVisible(true);
-                    List<NhanKhauBean> listNopTien = thuPhiService.getListNopTienKhoan(idKhoanThuSelected);
-                    String COLUNMSNopTien[] = {"STT", "Tên người nộp", "Ngày sinh"}; 
+                    List<HoKhauBean> listNopTien = thuPhiService.getListNopTienKhoan(idKhoanThuSelected);
+                    String COLUNMSNopTien[] = {"STT", "Mã hộ khẩu", "Chủ hộ", "Số tiền đã nộp"}; 
                     DefaultTableModel model = tableModelThuPhi.setTableNopTien(listNopTien, COLUNMSNopTien);
 
                     JTable tableNopTien = new JTable(model) {

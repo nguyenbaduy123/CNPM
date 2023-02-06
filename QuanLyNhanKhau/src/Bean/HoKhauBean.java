@@ -3,7 +3,9 @@ package Bean;
 import java.util.ArrayList;
 import java.util.List;
 import models.HoKhauModel;
+import models.KhoanThuModel;
 import models.NhanKhauModel;
+import models.NopTienModel;
 import models.ThanhVienCuaHoModel;
 
 /**
@@ -15,6 +17,7 @@ import models.ThanhVienCuaHoModel;
 public class HoKhauBean {
     private HoKhauModel hoKhauModel;
     private NhanKhauModel chuHo;
+    private NopTienModel nopTienModel;
     private List<NhanKhauModel> listNhanKhauModels;
     private List<ThanhVienCuaHoModel> listThanhVienCuaHo;
 
@@ -24,12 +27,14 @@ public class HoKhauBean {
         this.listNhanKhauModels = listNhanKhauModels;
         this.listThanhVienCuaHo = listThanhVienCuaHo;
     }
+
     
     public HoKhauBean() {
         this.hoKhauModel = new HoKhauModel();
         this.chuHo = new NhanKhauModel();
         this.listNhanKhauModels = new ArrayList<>();
         this.listThanhVienCuaHo = new ArrayList<>();
+        this.nopTienModel = new NopTienModel();
     }
 
     
@@ -37,6 +42,15 @@ public class HoKhauBean {
         return hoKhauModel;
     }
 
+    public NopTienModel getNopTienModel() {
+        return nopTienModel;
+    }
+
+    public void setNopTienModel(NopTienModel nopTienModel) {
+        this.nopTienModel = nopTienModel;
+    }
+
+    
     public void setHoKhauModel(HoKhauModel hoKhauModel) {
         this.hoKhauModel = hoKhauModel;
     }

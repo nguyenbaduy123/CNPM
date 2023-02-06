@@ -6,6 +6,7 @@ package utility;
 
 import Bean.KhoanThuBean;
 import Bean.NhanKhauBean;
+import Bean.HoKhauBean;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -41,7 +42,7 @@ public class TableModelThuPhi {
         });
         return dtm;
     }
-    public DefaultTableModel setTableNopTien(List<NhanKhauBean> listItem, String[] listColumn) {
+    public DefaultTableModel setTableNopTien(List<HoKhauBean> listItem, String[] listColumn) {
         final int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
             @Override
@@ -50,7 +51,7 @@ public class TableModelThuPhi {
             }
             @Override
             public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 3 ? Boolean.class : String.class;
+                return columnIndex == 4 ? Boolean.class : String.class;
             }
         };
         dtm.setColumnIdentifiers(listColumn);
@@ -59,8 +60,9 @@ public class TableModelThuPhi {
         int stt = 1;
         for(int i=0; i<listItem.size(); i++) {
             obj[0] = stt++;
-            obj[1] = listItem.get(i).getNhanKhauModel().getHoTen();
-            obj[2] = listItem.get(i).getNhanKhauModel().getNamSinh();
+            obj[1] = listItem.get(i).getHoKhauModel().getMaHoKhau();
+            obj[2] = listItem.get(i).getChuHo().getHoTen();
+            obj[3] = listItem.get(i).getNopTienModel().getSoTien();
             dtm.addRow(obj);
         }
 //        listItem.forEach((NhanKhauBean item) -> {  

@@ -20,7 +20,7 @@ public class LoginUI extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Login");
+        setTitle("Đăng nhập");
         keyListenner(txbUserName);
         keyListenner(txbPasswd);
     }

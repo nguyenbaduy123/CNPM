@@ -7,6 +7,8 @@ import Bean.KhoanThuBean;
 import Bean.NhanKhauBean;
 import controllers.NhanKhauManagerController.DangKyTamTruController;
 import controllers.ThuPhiManagerController.NopTienController;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -32,6 +34,7 @@ public class NopTien extends javax.swing.JFrame {
     public NopTien(JFrame parentJFrame) {
         setTitle("Nộp Tiền");
         initComponents();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.parentJFrame = parentJFrame;
         parentJFrame.setEnabled(false);
         controller = new NopTienController(this);
@@ -39,12 +42,24 @@ public class NopTien extends javax.swing.JFrame {
 //        controller.setTableRightJpn(tableRigthJtf);
         controller.setTableTopJpn(tableTopJpn);
         controller.setTenKhoanThuJft(tenKhoanThuJtf);
+        tenKhoanThuJtf.setEditable(false);
         controller.setSoTienJft(soTienJtf);
+        controller.setSoNhanKhauJtf(soNhanKhauJtf);
+        soNhanKhauJtf.setEnabled(true);
         controller.setLoaiKhoanThuJft(loaiKhoanThuJtf);
+        loaiKhoanThuJtf.setEditable(false);
         controller.setAcceptBtn(acceptBtn);
         controller.setCancelBtn(cancelBtn);
         controller.setSoCmtJtf(soCmtJtf);
         controller.init();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                parentJFrame.setEnabled(true);
+                close();
+            }
+            
+        });
     }
 
     
@@ -66,12 +81,14 @@ public class NopTien extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tenKhoanThuJtf = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        soTienJtf = new javax.swing.JTextField();
+        soNhanKhauJtf = new javax.swing.JTextField();
         soCmtJtf = new javax.swing.JTextField();
         checkBtn = new javax.swing.JButton();
         availableIcon = new javax.swing.JLabel();
         acceptBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        soTienJtf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,15 +128,20 @@ public class NopTien extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Loại khoản thu:");
 
-        soTienJtf.setBackground(new java.awt.Color(240, 240, 240));
-        soTienJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        soTienJtf.addActionListener(new java.awt.event.ActionListener() {
+        soNhanKhauJtf.setBackground(new java.awt.Color(240, 240, 240));
+        soNhanKhauJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        soNhanKhauJtf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                soTienJtfActionPerformed(evt);
+                soNhanKhauJtfActionPerformed(evt);
             }
         });
 
         soCmtJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        soCmtJtf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                soCmtJtfActionPerformed(evt);
+            }
+        });
 
         checkBtn.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         checkBtn.setText("Check");
@@ -148,6 +170,11 @@ public class NopTien extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setText("Số nhân khẩu:");
+
+        soTienJtf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,12 +195,14 @@ public class NopTien extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tenKhoanThuJtf, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                             .addComponent(loaiKhoanThuJtf, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(soTienJtf, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)))
+                            .addComponent(soTienJtf)
+                            .addComponent(soNhanKhauJtf)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -215,12 +244,16 @@ public class NopTien extends javax.swing.JFrame {
                                     .addComponent(tenKhoanThuJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(soTienJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(soNhanKhauJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(loaiKhoanThuJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(soTienJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(loaiKhoanThuJtf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(acceptBtn)
@@ -231,9 +264,9 @@ public class NopTien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void soTienJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soTienJtfActionPerformed
+    private void soNhanKhauJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soNhanKhauJtfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_soTienJtfActionPerformed
+    }//GEN-LAST:event_soNhanKhauJtfActionPerformed
 
     private void checkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBtnActionPerformed
         if (checkCMT(soCmtJtf.getText())) {
@@ -264,6 +297,10 @@ public class NopTien extends javax.swing.JFrame {
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         close();
     }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void soCmtJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soCmtJtfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_soCmtJtfActionPerformed
 
     private boolean checkCMT(String cmt) {
         if (cmt.trim().isEmpty()) {
@@ -304,8 +341,10 @@ public class NopTien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField loaiKhoanThuJtf;
     private javax.swing.JTextField soCmtJtf;
+    private javax.swing.JTextField soNhanKhauJtf;
     private javax.swing.JTextField soTienJtf;
     private javax.swing.JPanel tableTopJpn;
     private javax.swing.JTextField tenKhoanThuJtf;
