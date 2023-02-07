@@ -96,6 +96,7 @@ public class ChoosePeople extends javax.swing.JFrame {
             .addGap(0, 272, Short.MAX_VALUE)
         );
 
+        confirmBtn.setBackground(new java.awt.Color(204, 204, 204));
         confirmBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         confirmBtn.setText("Xác nhận");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +105,7 @@ public class ChoosePeople extends javax.swing.JFrame {
             }
         });
 
+        cancelBtn.setBackground(new java.awt.Color(204, 204, 204));
         cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cancelBtn.setText("Hủy");
         cancelBtn.setToolTipText("");

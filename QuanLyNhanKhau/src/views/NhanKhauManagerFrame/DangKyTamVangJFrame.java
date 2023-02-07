@@ -132,6 +132,7 @@ public class DangKyTamVangJFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        acceptBtn.setBackground(new java.awt.Color(204, 204, 204));
         acceptBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         acceptBtn.setText("Xác nhận");
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +141,7 @@ public class DangKyTamVangJFrame extends javax.swing.JFrame {
             }
         });
 
+        CancelBtn.setBackground(new java.awt.Color(204, 204, 204));
         CancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CancelBtn.setText("Hủy");
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {

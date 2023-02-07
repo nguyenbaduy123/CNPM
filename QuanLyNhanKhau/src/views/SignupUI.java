@@ -88,10 +88,10 @@ public class SignupUI extends javax.swing.JFrame {
         jLabel3.setText("Mật khẩu:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Tên tài khoản:");
+        jLabel6.setText("Tên đăng nhập:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Nhập lại mật khẩu");
+        jLabel4.setText("Nhập lại mật khẩu:");
 
         txbPasswd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txbPasswd.setName("txtPasswd"); // NOI18N

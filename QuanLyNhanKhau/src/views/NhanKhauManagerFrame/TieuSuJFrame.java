@@ -93,6 +93,7 @@ public class TieuSuJFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Gia đình:");
 
+        acceptBtn.setBackground(new java.awt.Color(204, 204, 204));
         acceptBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         acceptBtn.setText("Xác nhận");
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +102,7 @@ public class TieuSuJFrame extends javax.swing.JFrame {
             }
         });
 
+        cancelBtn.setBackground(new java.awt.Color(204, 204, 204));
         cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cancelBtn.setText("Hủy");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {

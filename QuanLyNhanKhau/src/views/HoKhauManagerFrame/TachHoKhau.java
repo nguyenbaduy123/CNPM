@@ -266,6 +266,7 @@ public class TachHoKhau extends javax.swing.JFrame {
 
         removeBtn.setText("<<");
 
+        acceptBtn.setBackground(new java.awt.Color(204, 204, 204));
         acceptBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         acceptBtn.setText("Xác nhận");
         acceptBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -274,6 +275,7 @@ public class TachHoKhau extends javax.swing.JFrame {
             }
         });
 
+        cancelBtn.setBackground(new java.awt.Color(204, 204, 204));
         cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cancelBtn.setText("Hủy");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {

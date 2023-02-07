@@ -88,6 +88,7 @@ public class LoginUI extends javax.swing.JFrame {
 
         btnLogin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLogin.setText("Đăng nhập");
+        btnLogin.setActionCommand("");
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLoginMouseClicked(evt);
@@ -103,7 +104,7 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel3.setText("Mật khẩu:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Tên tài khoản:");
+        jLabel6.setText("Tên đăng nhập:");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Chưa có tài khoản?");

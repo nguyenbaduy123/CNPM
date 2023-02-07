@@ -100,6 +100,7 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         denNamJtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setText("Show");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

@@ -168,16 +168,18 @@ public class AddNewPeopleJFrame extends javax.swing.JFrame {
             }
         });
 
+        CreateBtn.setBackground(new java.awt.Color(204, 204, 204));
         CreateBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        CreateBtn.setText("Create");
+        CreateBtn.setText("Xác nhận");
         CreateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateBtnActionPerformed(evt);
             }
         });
 
+        CancelBtn.setBackground(new java.awt.Color(204, 204, 204));
         CancelBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        CancelBtn.setText("Cancel");
+        CancelBtn.setText("Hủy");
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelBtnActionPerformed(evt);
