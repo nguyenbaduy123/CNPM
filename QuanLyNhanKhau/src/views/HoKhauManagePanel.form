@@ -26,10 +26,10 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="Kinh_lup" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="Kinh_lup" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jtfSearch" min="-2" pref="280" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="362" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="382" max="32767" attributes="0"/>
                   </Group>
                   <Component id="tableJpn" max="32767" attributes="0"/>
               </Group>
@@ -88,7 +88,7 @@
     <Component class="javax.swing.JLabel" name="Kinh_lup">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Icons/Kinh_lup.png"/>
+          <Image iconType="3" name="/Icons/Untitled.png"/>
         </Property>
       </Properties>
     </Component>

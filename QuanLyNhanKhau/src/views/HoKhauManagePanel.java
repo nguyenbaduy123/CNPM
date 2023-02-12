@@ -67,7 +67,7 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        Kinh_lup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Kinh_lup.png"))); // NOI18N
+        Kinh_lup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Untitled.png"))); // NOI18N
 
         themMoiBtn.setBackground(new java.awt.Color(204, 204, 204));
         themMoiBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -138,10 +138,10 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Kinh_lup, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(Kinh_lup)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 362, Short.MAX_VALUE))
+                        .addGap(0, 382, Short.MAX_VALUE))
                     .addComponent(tableJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
