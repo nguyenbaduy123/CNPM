@@ -4,7 +4,6 @@
  */
 package services;
 import Bean.HoKhauBean;
-import controllers.LoginController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,11 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import Bean.KhoanThuBean;
-import Bean.NhanKhauBean;
-import models.HoKhauModel;
 import models.KhoanThuModel;
-import models.NhanKhauModel;
-import models.NopTienModel;
 /**
  *
  * @author Duy
@@ -145,6 +140,33 @@ public class ThuPhiService {
              Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
          }
          return count;
+     }
+     
+     public List<KhoanThuBean> search(String keyword) {
+             List<KhoanThuBean> list = new ArrayList<>();
+             
+             String query = "SELECT * FROM khoan_thu "
+                     + "WHERE tenKhoanThu LIKE '%" + keyword + "%'";
+        try {
+
+            Connection connection = MysqlConnection.getMysqlConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                KhoanThuBean temp = new KhoanThuBean();
+                KhoanThuModel khoanThuModel = temp.getKhoanThuModel();
+                khoanThuModel.setId(rs.getInt(1));
+                khoanThuModel.setTenKhoanThu(rs.getString(2));
+                khoanThuModel.setSoTien(rs.getInt(3));
+                khoanThuModel.setLoaiKhoanThu(rs.getInt(4)); 
+                list.add(temp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
      }
      
 }

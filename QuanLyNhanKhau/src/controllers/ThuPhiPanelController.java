@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import models.KhoanThuModel;
 import services.ThuPhiService;
@@ -33,6 +35,7 @@ public class ThuPhiPanelController {
     private List<KhoanThuBean> list;
     private JTextField searchJtf;
     private JPanel tableJpn;
+    private JTextField jtfSearch;
     private final ThuPhiService thuPhiService = new ThuPhiService();
 //        private final HoKhauService hoKhauService = new HoKhauService();
 
@@ -40,10 +43,44 @@ public class ThuPhiPanelController {
     private final String COLUNMS[] = {"Tên Khoản Thu", "Số tiền", "Loại khoản thu"}; 
     private JFrame parentJFrame;
 
-    public ThuPhiPanelController(JPanel tableJpn) {
+    public ThuPhiPanelController(JPanel tableJpn, JTextField jtfSearch) {
         this.tableJpn = tableJpn;
+        this.jtfSearch = jtfSearch;
         this.list = thuPhiService.getListKhoanThu();
+        initAction();
         setData();
+    }
+    
+    public void initAction(){
+    
+        if(!this.jtfSearch.getText().equals("")) {
+            return;
+        }
+
+        this.jtfSearch.getDocument().addDocumentListener(new DocumentListener() {
+               
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String keyword = jtfSearch.getText();
+                list = thuPhiService.search(keyword.trim());
+                setData();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String keyword = jtfSearch.getText();
+                list = thuPhiService.search(keyword.trim());
+                setData();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                String keyword = jtfSearch.getText();
+                list = thuPhiService.search(keyword.trim());
+                setData();
+            }
+        });
+
     }
 
     public void setData() {

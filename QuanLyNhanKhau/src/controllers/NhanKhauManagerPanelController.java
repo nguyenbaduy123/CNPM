@@ -98,9 +98,21 @@ public class NhanKhauManagerPanelController {
         table.validate();
         table.repaint();
         table.setFont(new Font("Arial", Font.PLAIN, 14));
-        table.getColumnModel().getColumn(0).setMaxWidth(80);
-        table.getColumnModel().getColumn(0).setMinWidth(80);
-        table.getColumnModel().getColumn(0).setPreferredWidth(80);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+        table.getColumnModel().getColumn(0).setMinWidth(50);
+        table.getColumnModel().getColumn(0).setPreferredWidth(50);
+        table.getColumnModel().getColumn(1).setMaxWidth(150);
+        table.getColumnModel().getColumn(1).setMinWidth(150);
+        table.getColumnModel().getColumn(1).setPreferredWidth(50);
+        table.getColumnModel().getColumn(2).setMaxWidth(100);
+        table.getColumnModel().getColumn(2).setMinWidth(100);
+        table.getColumnModel().getColumn(2).setPreferredWidth(80);
+        table.getColumnModel().getColumn(3).setMaxWidth(80);
+        table.getColumnModel().getColumn(3).setMinWidth(80);
+        table.getColumnModel().getColumn(3).setPreferredWidth(80);
+        table.getColumnModel().getColumn(4).setMaxWidth(270);
+        table.getColumnModel().getColumn(4).setMinWidth(80);
+        table.getColumnModel().getColumn(4).setPreferredWidth(80);
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

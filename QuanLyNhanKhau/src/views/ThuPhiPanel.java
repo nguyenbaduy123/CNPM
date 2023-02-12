@@ -20,7 +20,7 @@ public class ThuPhiPanel extends javax.swing.JPanel {
     public ThuPhiPanel(JFrame parentFrame) {
         this.parentFrame = parentFrame;
         initComponents();
-        controller = new ThuPhiPanelController(tableJpn);
+        controller = new ThuPhiPanelController(tableJpn, jtfSearch);
         controller.setParentJFrame(parentFrame);
     }
 
@@ -44,6 +44,8 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         themMoiBtn = new javax.swing.JButton();
         nopTienBtn = new javax.swing.JButton();
+        Kinh_lup = new javax.swing.JLabel();
+        jtfSearch = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -81,6 +83,15 @@ public class ThuPhiPanel extends javax.swing.JPanel {
             }
         });
 
+        Kinh_lup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Kinh_lup.png"))); // NOI18N
+
+        jtfSearch.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jtfSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,13 +109,20 @@ public class ThuPhiPanel extends javax.swing.JPanel {
                             .addComponent(themMoiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel10)
+                        .addGap(29, 29, 29)
+                        .addComponent(Kinh_lup, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Kinh_lup, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -135,11 +153,17 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         nopTien.setVisible(true);
     }//GEN-LAST:event_nopTienBtnActionPerformed
 
+    private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup GenderChoose;
+    private javax.swing.JLabel Kinh_lup;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jtfSearch;
     private javax.swing.JButton nopTienBtn;
     private javax.swing.ButtonGroup statusChoose;
     private javax.swing.JPanel tableJpn;
