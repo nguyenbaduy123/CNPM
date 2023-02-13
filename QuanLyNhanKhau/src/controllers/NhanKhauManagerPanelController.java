@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 import utility.ClassTableModel;
+import views.NhanKhauManagerFrame.EditNhanKhauJFrame;
 import views.infoViews.InfoJframe;
 
 /**
@@ -36,13 +37,16 @@ public class NhanKhauManagerPanelController {
     private ClassTableModel classTableModel = null;
     private final String[] COLUMNS = {"ID", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ hiện nay"};
     private JFrame parentJFrame;
-
+    private int tempId = 0;
+    private String tempCmt = "";
+    
     public NhanKhauManagerPanelController(JPanel jpnView, JTextField jtfSearch) {
         this.jpnView = jpnView;
         this.jtfSearch = jtfSearch;
         classTableModel = new ClassTableModel();
         this.nhanKhauService = new NhanKhauService();
         this.listNhanKhauBeans = this.nhanKhauService.getListNhanKhau();
+  
         initAction();
     }
 
@@ -117,7 +121,12 @@ public class NhanKhauManagerPanelController {
             @Override
             public void mouseClicked(MouseEvent e) {
 //                JOptionPane.showConfirmDialog(null, table.getSelectedRow());
-                if (e.getClickCount() > 1) {
+                if(e.getClickCount() == 1) {
+                  NhanKhauBean temp = listNhanKhauBeans.get(table.getSelectedRow());
+                  tempId = temp.getNhanKhauModel().getID();
+                  tempCmt = temp.getChungMinhThuModel().getSoCMT();
+                }
+                else if (e.getClickCount() > 1) {
                     NhanKhauBean temp = listNhanKhauBeans.get(table.getSelectedRow());
                     NhanKhauBean info = nhanKhauService.getNhanKhau(temp.getChungMinhThuModel().getSoCMT());
                     InfoJframe infoJframe = new InfoJframe(info.toString(), parentJFrame);
@@ -161,6 +170,37 @@ public class NhanKhauManagerPanelController {
     public void setJtfSearch(JTextField jtfSearch) {
         this.jtfSearch = jtfSearch;
     }
+
+    public int getTempId() {
+        return tempId;
+    }
+
+    public String getTempCmt() {
+        return tempCmt;
+    }
     
-    
+    public void delete(int id) {
+        if(id == 0) {
+            JOptionPane.showMessageDialog(parentJFrame, "Bạn cần chọn nhân khẩu để xóa", "Lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int check = JOptionPane.showConfirmDialog(parentJFrame, "Bạn thực sự muốn xóa nhân khẩu này?", "Warning", JOptionPane.YES_NO_CANCEL_OPTION);
+        
+        if(check == 0) { 
+            if(nhanKhauService.delete(id)) {
+                JOptionPane.showMessageDialog(parentJFrame, "Đã xóa nhân khẩu thành công", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+                setDataTable();
+            }
+        } else {
+            return;
+        }
+    }
+    public void edit() {
+        if(tempCmt.equals("") || tempCmt.equals(null)) {
+            JOptionPane.showMessageDialog(parentJFrame, "Bạn cần chọn nhân khẩu để sửa", "Lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        EditNhanKhauJFrame editNhanKhau = new EditNhanKhauJFrame(this.parentJFrame, this.tempCmt);
+        editNhanKhau.setVisible(true);
+    }
 }
