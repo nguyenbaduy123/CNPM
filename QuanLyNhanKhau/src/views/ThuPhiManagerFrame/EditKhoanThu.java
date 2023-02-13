@@ -5,29 +5,42 @@
 package views.ThuPhiManagerFrame;
 import Bean.KhoanThuBean;
 import controllers.ThuPhiManagerController.AddKhoanThuController;
+import controllers.ThuPhiManagerController.EditKhoanThuController;
 import controllers.ThuPhiPanelController;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import  javax.swing.JButton;
+import services.MysqlConnection;
+import services.ThuPhiService;
 /**
  *
  * @author Duy
  */
-public class ThemKhoanThu extends javax.swing.JFrame {
+public class EditKhoanThu extends javax.swing.JFrame {
 
     ThuPhiPanelController temp;
+    private int prevId;
+    private KhoanThuBean selected;
     private JFrame parentJFrame;
     private KhoanThuBean khoanThuBean = new KhoanThuBean();
-    private final AddKhoanThuController controller = new AddKhoanThuController();
-    public ThemKhoanThu(JFrame parentJFrame, ThuPhiPanelController temp) {
-        setTitle("Thêm khoản thu");
+    private ThuPhiService service = new ThuPhiService();
+    private final EditKhoanThuController controller = new EditKhoanThuController();
+    public EditKhoanThu(JFrame parentJFrame, ThuPhiPanelController temp, int prevId) {
+        setTitle("Sửa khoản thu");
         this.temp = temp;
+        this.prevId = prevId;
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.selected = service.getKhoanThuById(prevId);
+        setPrevData();
         this.parentJFrame = parentJFrame;
         parentJFrame.setEnabled(false);
         this.addWindowListener(new WindowAdapter() {
@@ -40,6 +53,7 @@ public class ThemKhoanThu extends javax.swing.JFrame {
         });
     }
 
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -190,6 +204,9 @@ public class ThemKhoanThu extends javax.swing.JFrame {
                 {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các thông tin bắt buộc", "Warning", JOptionPane.ERROR_MESSAGE);
         } else {
+            this.khoanThuBean.getKhoanThuModel().setId(this.prevId);
+//            this.khoanThuBean.getKhoanThuModel().setNgayBatDau(this.selected.getKhoanThuModel().getNgayBatDau());
+            
             this.khoanThuBean.getKhoanThuModel().setTenKhoanThu(tenKhoanThuJtf.getText().trim());
             this.khoanThuBean.getKhoanThuModel().setSoTien(Integer.parseInt(soTienJtf.getText().trim()));
             this.khoanThuBean.getKhoanThuModel().setNgayKetThuc(endDate.getDate());
@@ -201,7 +218,7 @@ public class ThemKhoanThu extends javax.swing.JFrame {
             }
             this.khoanThuBean.getKhoanThuModel().setLoaiKhoanThu(loaiKhoanThu);
             try {
-                this.controller.addNew(khoanThuBean);
+                this.controller.editKhoanThu(khoanThuBean);
                 this.parentJFrame.setEnabled(true);
                 temp.setData();
                 dispose();
@@ -219,6 +236,14 @@ public class ThemKhoanThu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loaiKhoanThuJcbActionPerformed
 
+    
+    public void setPrevData() {
+
+        tenKhoanThuJtf.setText(selected.getKhoanThuModel().getTenKhoanThu());
+        soTienJtf.setText(selected.getKhoanThuModel().getSoTien() + "");
+//        endDate.setDate(selected.getKhoanThuModel().getNgayKetThuc());
+
+    }
     /**
      * @param args the command line arguments
      */

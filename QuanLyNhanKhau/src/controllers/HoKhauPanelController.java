@@ -32,6 +32,7 @@ public class HoKhauPanelController {
     private final TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
     private final String COLUNMS[] = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ"}; 
     private JFrame parentJFrame;
+    private String idTemp;
 
     public HoKhauPanelController(JTextField searchJtf, JPanel tableJpn) {
         this.searchJtf = searchJtf;
@@ -97,6 +98,10 @@ public class HoKhauPanelController {
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if(e.getClickCount() == 1) {
+                    HoKhauBean temp = list.get(table.getSelectedRow());
+                    idTemp = temp.getHoKhauModel().getMaHoKhau();           
+                }
                 if (e.getClickCount() > 1) {
                     HoKhauBean temp = list.get(table.getSelectedRow());
                     InfoJframe infoJframe = new InfoJframe(temp.toString(), parentJFrame);

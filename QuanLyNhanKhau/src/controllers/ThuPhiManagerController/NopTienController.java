@@ -91,7 +91,7 @@ public class NopTienController {
     }
     
     public void setData() {
-        TableModel hokhau_model = this.tableModelThuPhi.setTableKhoanThu(listKhoanThu, COLUNMS);
+        TableModel hokhau_model = this.tableModelThuPhi.setTableKhoanThuConHan(listKhoanThu, COLUNMS);
         JTable table = new JTable(hokhau_model) {
             @Override
             public boolean editCellAt(int row, int column, EventObject e) {

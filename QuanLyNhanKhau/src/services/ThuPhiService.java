@@ -36,6 +36,8 @@ public class ThuPhiService {
                 khoanThuModel.setTenKhoanThu(rs.getString("tenKhoanThu"));
                 khoanThuModel.setSoTien(rs.getInt("soTien"));
                 khoanThuModel.setLoaiKhoanThu(rs.getInt("loaiKhoanThu"));
+                khoanThuModel.setNgayBatDau(rs.getDate("ngayBatDau"));
+                khoanThuModel.setNgayKetThuc(rs.getDate("ngayKetThuc"));
                 list.add(temp);
             }
             preparedStatement.close();
@@ -45,14 +47,17 @@ public class ThuPhiService {
         }
         return list;
     }
+     
      public boolean addNew(KhoanThuBean khoanThuBean) throws ClassNotFoundException, SQLException{
          Connection connection = MysqlConnection.getMysqlConnection();
-        String query = "INSERT INTO khoan_thu(tenKhoanThu, soTien, loaiKhoanThu)" 
-                    + " values (?, ?, ?)";
+        String query = "INSERT INTO khoan_thu(tenKhoanThu, soTien, loaiKhoanThu, ngayBatDau, ngayKetThuc)" 
+                    + " values (?, ?, ?, NOW(), ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, khoanThuBean.getKhoanThuModel().getTenKhoanThu());
         preparedStatement.setInt(2, khoanThuBean.getKhoanThuModel().getSoTien());
         preparedStatement.setInt(3, khoanThuBean.getKhoanThuModel().getLoaiKhoanThu());
+        java.sql.Date ngaykt = new java.sql.Date(khoanThuBean.getKhoanThuModel().getNgayKetThuc().getTime());
+        preparedStatement.setDate(4, ngaykt);
 
         preparedStatement.executeUpdate();
         preparedStatement.close();
@@ -169,4 +174,72 @@ public class ThuPhiService {
         return list;
      }
      
+     public boolean deleteKhoanThu(int id) {
+         try {
+             String query = "DELETE FROM khoan_thu WHERE id=" + id;
+             Connection conn = MysqlConnection.getMysqlConnection();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.execute();
+             ps.close();
+             conn.close();
+             return true;
+         } catch (SQLException ex) {
+             Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return false;
+     }
+     
+     public KhoanThuBean getKhoanThuById(int id) {
+         KhoanThuBean temp = new KhoanThuBean();
+         try {
+             Connection connection = MysqlConnection.getMysqlConnection();
+             String query = "SELECT * FROM khoan_thu WHERE id = " + id;
+             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+             ResultSet rs = preparedStatement.executeQuery();
+             while(rs.next()) {
+                 temp.getKhoanThuModel().setTenKhoanThu(rs.getString("tenKhoanThu"));
+                 temp.getKhoanThuModel().setSoTien(rs.getInt("soTien"));
+                 temp.getKhoanThuModel().setLoaiKhoanThu(rs.getInt("loaiKhoanThu"));
+                 temp.getKhoanThuModel().setNgayBatDau(rs.getDate("ngayBatDau"));
+                 temp.getKhoanThuModel().setNgayBatDau(rs.getDate("ngayKetThuc"));
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return temp;
+     }
+     
+     public boolean editKhoanThu(KhoanThuBean khoanThuBean) {
+         try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            String query = "UPDATE khoan_thu "
+                    + "SET tenKhoanThu = ?, soTien = ?, "
+                    + "loaiKhoanThu = ?, ngayKetThuc = ? "
+                    + "WHERE id = " + khoanThuBean.getKhoanThuModel().getId();
+
+            PreparedStatement ps  = conn.prepareStatement(query);
+            java.sql.Date ngaykt = new java.sql.Date(khoanThuBean.getKhoanThuModel().getNgayKetThuc().getTime());
+            ps.setString(1, khoanThuBean.getKhoanThuModel().getTenKhoanThu());
+            ps.setInt(2, khoanThuBean.getKhoanThuModel().getSoTien());
+            ps.setInt(3, khoanThuBean.getKhoanThuModel().getLoaiKhoanThu());
+            ps.setDate(4, ngaykt);
+             System.out.println(ngaykt);
+
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
+         
+         } catch (SQLException ex) {
+             Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(ThuPhiService.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return false;
+     }
+      
 }

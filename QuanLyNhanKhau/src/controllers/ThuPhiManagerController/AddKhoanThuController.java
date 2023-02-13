@@ -5,16 +5,19 @@
 package controllers.ThuPhiManagerController;
 import java.sql.SQLException;
 import Bean.KhoanThuBean;
+import controllers.ThuPhiPanelController;
 import services.ThuPhiService;
 /**
  *
  * @author Duy
  */
 public class AddKhoanThuController {
+    private ThuPhiPanelController controller = new ThuPhiPanelController();
     private KhoanThuBean khoanThuBean;
     private ThuPhiService thuPhiService = new ThuPhiService();
     
     public void addNew(KhoanThuBean hoKhauBean) throws ClassNotFoundException, SQLException{
         this.thuPhiService.addNew(hoKhauBean);
+//        this.controller = new ThuPhiPanelController();
     }
 }

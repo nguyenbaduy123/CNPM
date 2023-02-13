@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.util.Date;
+
 /**
  *
  * @author Duy
@@ -13,7 +15,26 @@ public class KhoanThuModel {
     private String tenKhoanThu;
     private int soTien;
     private int loaiKhoanThu;
+    private Date ngayBatDau;
+    private Date ngayKetThuc;
 
+    public Date getNgayBatDau() {
+        return ngayBatDau;
+    }
+
+    public Date getNgayKetThuc() {
+        return ngayKetThuc;
+    }
+
+    public void setNgayBatDau(Date ngayBatDau) {
+        this.ngayBatDau = ngayBatDau;
+    }
+
+    public void setNgayKetThuc(Date ngayKetThuc) {
+        this.ngayKetThuc = ngayKetThuc;
+    }
+
+    
     public void setId(int id) {
         this.id = id;
     }

@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -23,6 +25,7 @@ import models.KhoanThuModel;
 import services.ThuPhiService;
 import utility.ClassTableModel;
 import utility.TableModelThuPhi;
+import views.ThuPhiManagerFrame.EditKhoanThu;
 import views.infoViews.InfoJframe;
 
 /**
@@ -40,8 +43,10 @@ public class ThuPhiPanelController {
 //        private final HoKhauService hoKhauService = new HoKhauService();
 
     private final TableModelThuPhi tableModelThuPhi = new TableModelThuPhi();
-    private final String COLUNMS[] = {"Tên Khoản Thu", "Số tiền", "Loại khoản thu"}; 
+    private final String COLUNMS[] = {"Tên Khoản Thu", "Số tiền", "Loại khoản thu", "Trạng thái"}; 
     private JFrame parentJFrame;
+    
+    int idTemp;
 
     public ThuPhiPanelController(JPanel tableJpn, JTextField jtfSearch) {
         this.tableJpn = tableJpn;
@@ -50,6 +55,8 @@ public class ThuPhiPanelController {
         initAction();
         setData();
     }
+    
+    public ThuPhiPanelController() {}
     
     public void initAction(){
     
@@ -85,6 +92,7 @@ public class ThuPhiPanelController {
 
     public void setData() {
 //        DefaultTableModel model = tableModelHoKhau.setTableHoKhau(list, COLUNMS);
+        this.list = thuPhiService.getListKhoanThu();
         DefaultTableModel model = tableModelThuPhi.setTableKhoanThu(list, COLUNMS);
         
         JTable table = new JTable(model) {
@@ -103,6 +111,10 @@ public class ThuPhiPanelController {
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if(e.getClickCount() == 1) {
+                    KhoanThuBean temp = list.get(table.getSelectedRow());
+                    idTemp = temp.getKhoanThuModel().getId();
+                }
                 if (e.getClickCount() > 1) {
                     KhoanThuBean temp = list.get(table.getSelectedRow());
                     int idKhoanThuSelected = temp.getKhoanThuModel().getId();
@@ -116,14 +128,20 @@ public class ThuPhiPanelController {
                     List<HoKhauBean> listNopTien = thuPhiService.getListNopTienKhoan(idKhoanThuSelected);
                     String COLUNMSNopTien[] = {"STT", "Mã hộ khẩu", "Chủ hộ", "Số tiền đã nộp"}; 
                     DefaultTableModel model = tableModelThuPhi.setTableNopTien(listNopTien, COLUNMSNopTien);
-
+                    
+                    int sum = 0;
+                    for(int i=0; i<listNopTien.size(); i++) {
+                        sum += listNopTien.get(i).getNopTienModel().getSoTien();
+                    }
+//                    System.out.println(sum);
+                    
                     JTable tableNopTien = new JTable(model) {
                         @Override
                         public boolean editCellAt(int row, int column, EventObject e) {
                             return false;
                         }
-
                     };
+                    
                     tableNopTien.getColumnModel().getColumn(0).setPreferredWidth(4);
                     tableNopTien.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
                     tableNopTien.getTableHeader().setPreferredSize(new Dimension(100, 50));
@@ -182,4 +200,31 @@ public class ThuPhiPanelController {
         this.tableJpn = tableJpn;
     }
     
+    public void delete() {
+        
+        if(idTemp == 0) {
+            JOptionPane.showMessageDialog(parentJFrame, "Bạn cần chọn khoản thu để xóa", "Lỗi", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        int check = JOptionPane.showConfirmDialog(parentJFrame, "Bạn thực sự muốn xóa khoản thu này?", "Cảnh báo", JOptionPane.YES_NO_CANCEL_OPTION);
+        if(check == 0) {     
+            if(thuPhiService.deleteKhoanThu(idTemp)) {
+               JOptionPane.showMessageDialog(parentJFrame, "Đã xóa khoản thu này thành công", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+               setData();
+            }
+        } else return;
+    }
+    
+    public void edit() {
+        if(idTemp == 0) {
+            JOptionPane.showMessageDialog(parentJFrame, "Bạn cần chọn khoản thu để sửa", "Lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        EditKhoanThu edit = new EditKhoanThu(this.parentJFrame, this, idTemp);
+        edit.setLocationRelativeTo(null);
+        edit.setResizable(false);
+        edit.setVisible(true);
+//        setData();
+    }
 }
