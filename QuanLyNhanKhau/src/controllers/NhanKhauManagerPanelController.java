@@ -51,6 +51,9 @@ public class NhanKhauManagerPanelController {
     }
 
     public NhanKhauManagerPanelController() {
+        this.classTableModel = new ClassTableModel();
+        this.nhanKhauService = new NhanKhauService();
+        this.listNhanKhauBeans = this.nhanKhauService.getListNhanKhau();
     }
     
     
@@ -200,7 +203,7 @@ public class NhanKhauManagerPanelController {
             JOptionPane.showMessageDialog(parentJFrame, "Bạn cần chọn nhân khẩu để sửa", "Lỗi", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        EditNhanKhauJFrame editNhanKhau = new EditNhanKhauJFrame(this.parentJFrame, this.tempCmt);
+        EditNhanKhauJFrame editNhanKhau = new EditNhanKhauJFrame(this.parentJFrame,this, this.tempCmt);
         editNhanKhau.setVisible(true);
     }
 }

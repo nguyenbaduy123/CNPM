@@ -30,14 +30,14 @@ public class EditNhanKhauJFrame extends javax.swing.JFrame {
     private NhanKhauService nhanKhauService;
     private String cmt;
 
-    public EditNhanKhauJFrame(JFrame parentJFrame, String cmt) {
+    public EditNhanKhauJFrame(JFrame parentJFrame,NhanKhauManagerPanelController parentController,String cmt) {
+        this.parentController = parentController;
         this.parentFrame = parentJFrame;
         this.parentFrame.setEnabled(false);
         this.cmt = cmt;
         this.nhanKhauBean = new NhanKhauBean();
         this.nhanKhauService = new NhanKhauService();
         this.selectNhanKhauBean = nhanKhauService.getNhanKhau(cmt);
-  
         initComponents();
         setTitle("Sửa nhân khẩu");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -710,7 +710,7 @@ public class EditNhanKhauJFrame extends javax.swing.JFrame {
             temp.setIdNguoiTao(LoginController.currentUser.getID());
             try {
                 if (this.controller.editNhanKhau(this.nhanKhauBean)) {
-                    JOptionPane.showMessageDialog(null, "Thêm thành công!!");
+                    JOptionPane.showMessageDialog(null, "Sửa thành công!!");
                     close();
                     parentController.refreshData();
                     this.close();

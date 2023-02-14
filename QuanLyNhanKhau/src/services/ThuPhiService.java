@@ -176,9 +176,13 @@ public class ThuPhiService {
      
      public boolean deleteKhoanThu(int id) {
          try {
-             String query = "DELETE FROM khoan_thu WHERE id=" + id;
+             String query = "DELETE FROM nop_tien WHERE idKhoanThu = " + id;
              Connection conn = MysqlConnection.getMysqlConnection();
              PreparedStatement ps = conn.prepareStatement(query);
+             ps.execute();
+             
+             query = "DELETE FROM khoan_thu WHERE id=" + id;
+             ps = conn.prepareStatement(query);
              ps.execute();
              ps.close();
              conn.close();

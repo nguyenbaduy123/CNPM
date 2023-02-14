@@ -5,8 +5,10 @@
  */
 package views;
 
+import controllers.HoKhauManagerController.EditHoKhauController;
 import controllers.HoKhauPanelController;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import views.HoKhauManagerFrame.ChuyenDiNoiKhac;
 import views.HoKhauManagerFrame.TachHoKhau;
 import views.HoKhauManagerFrame.ThemMoiHoKhau;
@@ -210,11 +212,14 @@ public class HoKhauManagePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tachHoKhauBtnActionPerformed
 
     private void editBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtn1ActionPerformed
-        // TODO add your handling code here:
+        controller.edit();
     }//GEN-LAST:event_editBtn1ActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+        int check = JOptionPane.showConfirmDialog(parentFrame, "Bạn thật sự muốn xóa hộ này?", "Cảnh báo!!!", JOptionPane.YES_NO_CANCEL_OPTION);
+        if(check == 0) {
+         controller.delete();
+        } else return;
     }//GEN-LAST:event_deleteBtnActionPerformed
     
     

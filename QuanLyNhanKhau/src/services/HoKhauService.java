@@ -277,4 +277,26 @@ public class HoKhauService {
             System.out.println(e.getMessage());
         }
     }
+    
+    public boolean deleteHoKhau(int id) {
+        
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            String query = "DELETE FROM thanh_vien_cua_ho WHERE idHoKhau = " + id;
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.execute();
+            
+            query = "DELETE FROM ho_khau WHERE id = " + id;
+            ps = conn.prepareStatement(query);
+            ps.execute();
+            return true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
 }

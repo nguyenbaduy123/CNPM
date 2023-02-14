@@ -22,7 +22,7 @@ public class EditNhanKhauController {
     
     public boolean editNhanKhau(NhanKhauBean nhanKhauBean) {
         if(service.editNhanKhau(nhanKhauBean)) {
-            JOptionPane.showMessageDialog(null, "Đã sửa thành công", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+            return true; 
         }
         return false;
     }

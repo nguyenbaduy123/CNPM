@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Duy/Downloads/CNPM-2/CNPM/QuanLyNhanKhau/src/views/MainFrame.java</file>
+            <file>file:/C:/Users/Duy/Downloads/CNPM-2/CNPM/QuanLyNhanKhau/src/controllers/ThuPhiPanelController.java</file>
+            <file>file:/C:/Users/Duy/Downloads/CNPM-2/CNPM/QuanLyNhanKhau/src/controllers/ThuPhiManagerController/EditKhoanThuController.java</file>
+            <file>file:/C:/Users/Duy/Downloads/CNPM-2/CNPM/QuanLyNhanKhau/src/views/ThuPhiManagerFrame/EditKhoanThu.java</file>
+            <file>file:/C:/Users/Duy/Downloads/CNPM-2/CNPM/QuanLyNhanKhau/src/views/ThuPhiPanel.java</file>
+            <file>file:/C:/Users/Duy/Downloads/CNPM-2/CNPM/QuanLyNhanKhau/src/services/ThuPhiService.java</file>
+            <file>file:/C:/Users/Duy/Downloads/CNPM-2/CNPM/QuanLyNhanKhau/src/utility/TableModelThuPhi.java</file>
         </group>
     </open-files>
 </project-private>

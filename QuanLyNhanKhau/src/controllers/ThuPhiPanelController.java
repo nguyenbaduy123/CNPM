@@ -26,6 +26,7 @@ import services.ThuPhiService;
 import utility.ClassTableModel;
 import utility.TableModelThuPhi;
 import views.ThuPhiManagerFrame.EditKhoanThu;
+import views.ThuPhiManagerFrame.ThongKeKhoanThu;
 import views.infoViews.InfoJframe;
 
 /**
@@ -118,46 +119,12 @@ public class ThuPhiPanelController {
                 if (e.getClickCount() > 1) {
                     KhoanThuBean temp = list.get(table.getSelectedRow());
                     int idKhoanThuSelected = temp.getKhoanThuModel().getId();
-                    JFrame nopTienJFrame = new JFrame();
-                    nopTienJFrame.setTitle("Danh sách hộ đã nộp khoản thu này");
-                    nopTienJFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    nopTienJFrame.setPreferredSize(new Dimension(800, 400));
-                    nopTienJFrame.pack();
-                    nopTienJFrame.setLocationRelativeTo(null);
-                    nopTienJFrame.setVisible(true);
-                    List<HoKhauBean> listNopTien = thuPhiService.getListNopTienKhoan(idKhoanThuSelected);
-                    String COLUNMSNopTien[] = {"STT", "Mã hộ khẩu", "Chủ hộ", "Số tiền đã nộp"}; 
-                    DefaultTableModel model = tableModelThuPhi.setTableNopTien(listNopTien, COLUNMSNopTien);
-                    
-                    int sum = 0;
-                    for(int i=0; i<listNopTien.size(); i++) {
-                        sum += listNopTien.get(i).getNopTienModel().getSoTien();
-                    }
-//                    System.out.println(sum);
-                    
-                    JTable tableNopTien = new JTable(model) {
-                        @Override
-                        public boolean editCellAt(int row, int column, EventObject e) {
-                            return false;
-                        }
-                    };
-                    
-                    tableNopTien.getColumnModel().getColumn(0).setPreferredWidth(4);
-                    tableNopTien.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-                    tableNopTien.getTableHeader().setPreferredSize(new Dimension(100, 50));
-                    tableNopTien.setRowHeight(50);
-                    tableNopTien.validate();
-                    tableNopTien.repaint();
-                    tableNopTien.setFont(new Font("Arial", Font.PLAIN, 14));
-                    JPanel tableNopTienJpn = new JPanel();
-                    JScrollPane scroll = new JScrollPane();
-                    scroll.getViewport().add(tableNopTien);
-                    nopTienJFrame.getContentPane().add(tableNopTienJpn);
-                    tableNopTienJpn.removeAll();
-                    tableNopTienJpn.setLayout(new BorderLayout());
-                    tableNopTienJpn.add(scroll);
-                    tableNopTienJpn.validate();
-                    tableNopTienJpn.repaint();
+                    ThongKeKhoanThu thongke = new ThongKeKhoanThu(parentJFrame, idKhoanThuSelected);
+                    thongke.setResizable(false);
+                    thongke.setLocationRelativeTo(parentJFrame);
+                    thongke.setPreferredSize(new Dimension(800, 400));
+                    thongke.setVisible(true);
+                    thongke.pack();
                 }
             }
             
@@ -204,6 +171,7 @@ public class ThuPhiPanelController {
         
         if(idTemp == 0) {
             JOptionPane.showMessageDialog(parentJFrame, "Bạn cần chọn khoản thu để xóa", "Lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
         }
         
         int check = JOptionPane.showConfirmDialog(parentJFrame, "Bạn thực sự muốn xóa khoản thu này?", "Cảnh báo", JOptionPane.YES_NO_CANCEL_OPTION);

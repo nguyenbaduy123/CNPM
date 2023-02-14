@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.EventObject;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -32,7 +33,7 @@ public class HoKhauPanelController {
     private final TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
     private final String COLUNMS[] = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ"}; 
     private JFrame parentJFrame;
-    private String idTemp;
+    private int tempId;
 
     public HoKhauPanelController(JTextField searchJtf, JPanel tableJpn) {
         this.searchJtf = searchJtf;
@@ -100,7 +101,7 @@ public class HoKhauPanelController {
             public void mouseClicked(MouseEvent e) {
                 if(e.getClickCount() == 1) {
                     HoKhauBean temp = list.get(table.getSelectedRow());
-                    idTemp = temp.getHoKhauModel().getMaHoKhau();           
+                    tempId = temp.getHoKhauModel().getID();           
                 }
                 if (e.getClickCount() > 1) {
                     HoKhauBean temp = list.get(table.getSelectedRow());
@@ -149,4 +150,16 @@ public class HoKhauPanelController {
         this.tableJpn = tableJpn;
     }
     
+    public void delete() {
+        if(this.tempId == 0) {
+            return;
+        }
+        if(hoKhauService.deleteHoKhau(this.tempId)) {
+            JOptionPane.showMessageDialog(parentJFrame, "Đã xóa hộ khẩu thành công", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+            this.setData();
+        }
+    }
+    
+    public void edit() {
+    }
 }

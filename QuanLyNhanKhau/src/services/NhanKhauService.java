@@ -19,7 +19,7 @@ import models.TieuSuModel;
 
 /**
  *
- * @author Hai
+ * @author 
  */
 public class NhanKhauService {
     
@@ -364,7 +364,6 @@ public class NhanKhauService {
             ChungMinhThuModel chungMinhThu = nhanKhauBean.getChungMinhThuModel();
             Connection connection = MysqlConnection.getMysqlConnection();
             
-            System.out.println(nhanKhauBean.getNhanKhauModel().getID());
             // 1 - 19
             String query = "UPDATE nhan_khau SET hoTen = ?, bietDanh = ?, namSinh = ?, gioiTinh = ?, noiSinh = ?, "
                     + "nguyenQuan = ?, danToc = ?, tonGiao = ?, quocTich = ?, soHoChieu = ?, noiThuongTru = ?, "
