@@ -99,7 +99,7 @@ public class ThemMoiHoKhau extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Mã hộ khẩu:");
@@ -195,7 +195,7 @@ public class ThemMoiHoKhau extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thành viên của hộ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         javax.swing.GroupLayout memTableJpnLayout = new javax.swing.GroupLayout(memTableJpn);
@@ -209,6 +209,8 @@ public class ThemMoiHoKhau extends javax.swing.JFrame {
             .addGap(0, 223, Short.MAX_VALUE)
         );
 
+        editBtn.setBackground(new java.awt.Color(153, 153, 153));
+        editBtn.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         editBtn.setText("Sửa");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

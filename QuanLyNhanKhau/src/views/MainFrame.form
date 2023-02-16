@@ -62,7 +62,7 @@
         <Container class="javax.swing.JPanel" name="jpnMenu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
+              <Color blue="ff" green="99" red="99" type="rgb"/>
             </Property>
           </Properties>
 
@@ -109,7 +109,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jblTrangChu" alignment="0" pref="152" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jblTrangChu" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -125,15 +128,12 @@
                       <Color blue="99" green="99" red="99" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="18" style="1"/>
+                      <Font name="Arial" size="20" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/app.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Trang ch&#x1ee7;"/>
+                    <Property name="text" type="java.lang.String" value="    Trang ch&#x1ee7;"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -151,7 +151,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jlbNhanKhau" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jlbNhanKhau" alignment="0" pref="154" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -164,15 +164,12 @@
                 <Component class="javax.swing.JLabel" name="jlbNhanKhau">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
+                      <Font name="Arial" size="18" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/multiple-users-silhouette.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Nh&#xe2;n Kh&#x1ea9;u"/>
+                    <Property name="text" type="java.lang.String" value="    Nh&#xe2;n Kh&#x1ea9;u"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -200,15 +197,12 @@
                 <Component class="javax.swing.JLabel" name="jlbHoKhau">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
+                      <Font name="Arial" size="18" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/home.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="H&#x1ed9; Kh&#x1ea9;u"/>
+                    <Property name="text" type="java.lang.String" value="    H&#x1ed9; Kh&#x1ea9;u"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -236,15 +230,12 @@
                 <Component class="javax.swing.JLabel" name="jlbThongKe">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
+                      <Font name="Arial" size="18" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/increasing-stocks-graphic.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea;"/>
+                    <Property name="text" type="java.lang.String" value="    Th&#x1ed1;ng K&#xea;"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="MainFrame_jlbThongKe"/>
@@ -275,15 +266,12 @@
                 <Component class="javax.swing.JLabel" name="jlbThuPhi">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="14" style="1"/>
+                      <Font name="Arial" size="18" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/money.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Thu Ph&#xed;"/>
+                    <Property name="text" type="java.lang.String" value="    Thu Ph&#xed;"/>
                   </Properties>
                   <AccessibilityProperties>
                     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
@@ -301,7 +289,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="820" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="812" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

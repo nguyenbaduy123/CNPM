@@ -130,7 +130,7 @@ public class DangKyTamVangJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
         acceptBtn.setBackground(new java.awt.Color(204, 204, 204));
         acceptBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

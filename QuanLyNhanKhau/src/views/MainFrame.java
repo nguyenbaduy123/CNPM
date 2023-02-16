@@ -77,21 +77,22 @@ public class MainFrame extends javax.swing.JFrame {
 
         jpnContainer.setBackground(new java.awt.Color(255, 255, 255));
 
-        jpnMenu.setBackground(new java.awt.Color(153, 153, 153));
+        jpnMenu.setBackground(new java.awt.Color(153, 153, 255));
 
         Home.setBackground(new java.awt.Color(102, 102, 102));
 
         jblTrangChu.setBackground(new java.awt.Color(153, 153, 153));
-        jblTrangChu.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jblTrangChu.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jblTrangChu.setForeground(new java.awt.Color(255, 255, 255));
-        jblTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/app.png"))); // NOI18N
-        jblTrangChu.setText("Trang chủ");
+        jblTrangChu.setText("    Trang chủ");
 
         javax.swing.GroupLayout HomeLayout = new javax.swing.GroupLayout(Home);
         Home.setLayout(HomeLayout);
         HomeLayout.setHorizontalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jblTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jblTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         HomeLayout.setVerticalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,16 +102,15 @@ public class MainFrame extends javax.swing.JFrame {
         NhanKhauBtn.setBackground(new java.awt.Color(102, 102, 102));
         NhanKhauBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jlbNhanKhau.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbNhanKhau.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlbNhanKhau.setForeground(new java.awt.Color(255, 255, 255));
-        jlbNhanKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/multiple-users-silhouette.png"))); // NOI18N
-        jlbNhanKhau.setText("Nhân Khẩu");
+        jlbNhanKhau.setText("    Nhân Khẩu");
 
         javax.swing.GroupLayout NhanKhauBtnLayout = new javax.swing.GroupLayout(NhanKhauBtn);
         NhanKhauBtn.setLayout(NhanKhauBtnLayout);
         NhanKhauBtnLayout.setHorizontalGroup(
             NhanKhauBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlbNhanKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlbNhanKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
         );
         NhanKhauBtnLayout.setVerticalGroup(
             NhanKhauBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,10 +119,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         HoKhauBtn.setBackground(new java.awt.Color(102, 102, 102));
 
-        jlbHoKhau.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbHoKhau.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlbHoKhau.setForeground(new java.awt.Color(255, 255, 255));
-        jlbHoKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/home.png"))); // NOI18N
-        jlbHoKhau.setText("Hộ Khẩu");
+        jlbHoKhau.setText("    Hộ Khẩu");
 
         javax.swing.GroupLayout HoKhauBtnLayout = new javax.swing.GroupLayout(HoKhauBtn);
         HoKhauBtn.setLayout(HoKhauBtnLayout);
@@ -137,10 +136,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         ThongKeBtn.setBackground(new java.awt.Color(102, 102, 102));
 
-        jlbThongKe.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbThongKe.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlbThongKe.setForeground(new java.awt.Color(255, 255, 255));
-        jlbThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/increasing-stocks-graphic.png"))); // NOI18N
-        jlbThongKe.setText("Thống Kê");
+        jlbThongKe.setText("    Thống Kê");
 
         javax.swing.GroupLayout ThongKeBtnLayout = new javax.swing.GroupLayout(ThongKeBtn);
         ThongKeBtn.setLayout(ThongKeBtnLayout);
@@ -155,10 +153,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         ThuPhiBtn.setBackground(new java.awt.Color(102, 102, 102));
 
-        jlbThuPhi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbThuPhi.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jlbThuPhi.setForeground(new java.awt.Color(255, 255, 255));
-        jlbThuPhi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/money.png"))); // NOI18N
-        jlbThuPhi.setText("Thu Phí");
+        jlbThuPhi.setText("    Thu Phí");
 
         javax.swing.GroupLayout ThuPhiBtnLayout = new javax.swing.GroupLayout(ThuPhiBtn);
         ThuPhiBtn.setLayout(ThuPhiBtnLayout);
@@ -205,7 +202,7 @@ public class MainFrame extends javax.swing.JFrame {
         jpnBean.setLayout(jpnBeanLayout);
         jpnBeanLayout.setHorizontalGroup(
             jpnBeanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGap(0, 812, Short.MAX_VALUE)
         );
         jpnBeanLayout.setVerticalGroup(
             jpnBeanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

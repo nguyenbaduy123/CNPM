@@ -99,7 +99,7 @@ public class TachHoKhau extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
 
         tableTopJpn.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -114,7 +114,7 @@ public class TachHoKhau extends javax.swing.JFrame {
             .addGap(0, 212, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Chủ hộ hiện tại");
