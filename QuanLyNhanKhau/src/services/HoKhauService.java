@@ -1,6 +1,8 @@
 package services;
 
 import Bean.HoKhauBean;
+import Bean.MemOfFamily;
+import Bean.NhanKhauBean;
 import controllers.LoginController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -299,4 +301,198 @@ public class HoKhauService {
         
         return false;
     }
+    
+    public HoKhauBean getHoKhauById(int id) {
+        HoKhauBean hoKhauBean = new HoKhauBean();
+        
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            String query = "SELECT * FROM ho_khau hk "
+                    + "INNER JOIN nhan_khau nk ON nk.id = hk.idChuHo "
+                    + "WHERE hk.ID = " + id;
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                
+//                System.out.println(rs.getInt("idChuHo"));
+                
+                HoKhauModel hoKhauModel = hoKhauBean.getHoKhauModel();
+                hoKhauModel.setID(rs.getInt("ID"));
+                hoKhauModel.setIdChuHo(rs.getInt("hk.idChuHo"));
+                hoKhauModel.setMaHoKhau(rs.getString("maHoKhau"));
+                hoKhauModel.setMaKhuVuc(rs.getString("maKhuVuc"));
+                hoKhauModel.setNgayLap(rs.getDate("ngayLap"));
+                hoKhauModel.setDiaChi(rs.getString("diaChi"));
+                NhanKhauModel chuHo = hoKhauBean.getChuHo();
+                chuHo.setID(rs.getInt("idChuHo"));
+                chuHo.setHoTen(rs.getString("hoTen"));
+                chuHo.setGioiTinh(rs.getString("gioiTinh"));
+                chuHo.setNamSinh(rs.getDate("namSinh"));
+                chuHo.setDiaChiHienNay(rs.getString("diaChiHienNay"));  
+                try {
+                    String sql = "SELECT * FROM nhan_khau INNER JOIN thanh_vien_cua_ho ON nhan_khau.ID = thanh_vien_cua_ho.idNhanKhau "
+                            + "WHERE thanh_vien_cua_ho.idHoKhau = "+ id;
+                    ps = conn.prepareStatement(sql);
+                    ResultSet rs_1 = ps.executeQuery();
+                    List<NhanKhauModel> listNhanKhau = hoKhauBean.getListNhanKhauModels();
+                    List<ThanhVienCuaHoModel> listThanhVienCuaHo = hoKhauBean.getListThanhVienCuaHo();
+                    while (rs_1.next()) {
+                        NhanKhauModel nhanKhauModel = new NhanKhauModel();
+                        ThanhVienCuaHoModel thanhVienCuaHoModel = new ThanhVienCuaHoModel();
+                        nhanKhauModel.setID(rs_1.getInt("ID"));
+                        nhanKhauModel.setBietDanh(rs_1.getString("bietDanh"));
+                        nhanKhauModel.setHoTen(rs_1.getString("hoTen"));
+                        nhanKhauModel.setGioiTinh(rs_1.getString("gioiTinh"));
+                        nhanKhauModel.setNamSinh(rs_1.getDate("namSinh"));
+                        nhanKhauModel.setNguyenQuan(rs_1.getString("nguyenQuan"));
+                        nhanKhauModel.setTonGiao(rs_1.getString("tonGiao"));
+                        nhanKhauModel.setDanToc(rs_1.getString("danToc"));
+                        nhanKhauModel.setQuocTich(rs_1.getString("quocTich"));
+                        nhanKhauModel.setSoHoChieu(rs_1.getString("soHoChieu"));
+                        nhanKhauModel.setNoiThuongTru(rs_1.getString("noiThuongTru"));
+                        nhanKhauModel.setDiaChiHienNay(rs_1.getString("diaChiHienNay"));
+                        
+                        thanhVienCuaHoModel.setIdHoKhau(rs_1.getInt("idHoKhau"));
+                        thanhVienCuaHoModel.setIdNhanKhau(rs_1.getInt("ID"));
+                        thanhVienCuaHoModel.setQuanHeVoiChuHo(rs_1.getString("quanHeVoiChuHo"));
+                        listNhanKhau.add(nhanKhauModel);
+                        listThanhVienCuaHo.add(thanhVienCuaHoModel);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return hoKhauBean;
+    }
+    
+    public List<MemOfFamily> getListMemOfFamily(int id) {
+        List<MemOfFamily> list = new ArrayList<>();
+        
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            String query = "SELECT * FROM thanh_vien_cua_ho tvch "
+                    + "INNER JOIN nhan_khau nk ON nk.id = tvch.idNhanKhau "
+                    + "INNER JOIN chung_minh_thu cmt ON cmt.idNhanKhau = tvch.idNhanKhau "
+                    + "WHERE tvch.idHoKhau = " + id;
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                MemOfFamily mof = new MemOfFamily();
+                NhanKhauBean nhanKhau = mof.getNhanKhau();
+                ThanhVienCuaHoModel thanhVienCuaHoModel = mof.getThanhVienCuaHoModel();
+
+                    nhanKhau.getNhanKhauModel().setHoTen(rs.getString("hoTen"));
+                    nhanKhau.getNhanKhauModel().setNamSinh(rs.getDate("namSinh"));
+                    thanhVienCuaHoModel.setQuanHeVoiChuHo(rs.getString("quanHeVoiChuHo"));
+                    nhanKhau.getChungMinhThuModel().setSoCMT(rs.getString("soCMT"));
+//                    System.out.println(rs.getString("soCMT"));
+                list.add(mof);
+    
+            }
+            ps.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return list;
+    }
+    
+    public boolean editHoKhau(HoKhauBean hoKhauBean) {
+        try {
+            Connection conn = MysqlConnection.getMysqlConnection();
+            int genID = hoKhauBean.getHoKhauModel().getID();
+            
+            
+            String sqlz = "SELECT * FROM thanh_vien_cua_ho WHERE idHoKhau = " + hoKhauBean.getHoKhauModel().getID();
+            PreparedStatement ps = conn.prepareStatement(sqlz);
+            ResultSet rs = ps.executeQuery();
+            
+            ArrayList<Integer> tempIds = new ArrayList<Integer>(5);
+            while(rs.next()) {
+                tempIds.add(rs.getInt("idNhanKhau"));
+            }
+            for(int i = 0; i < hoKhauBean.getListThanhVienCuaHo().size(); i++) {
+                for(int j = 0; j< tempIds.size(); j++) {
+                    if(tempIds.get(j) == hoKhauBean.getListThanhVienCuaHo().get(i).getIdNhanKhau()
+                            || tempIds.get(j) == 0) {
+                        tempIds.remove(j);
+                    }
+                }
+            }
+            
+//            for(int i = 0; i < hoKhauBean.getListThanhVienCuaHo().size(); i++) { 
+//                System.out.println(hoKhauBean.getListThanhVienCuaHo().get(i).getIdNhanKhau());
+//            }
+            
+            for(int i = 0; i < tempIds.size(); i++) {
+                sqlz = "DELETE FROM thanh_vien_cua_ho WHERE idNhanKhau = " + tempIds.get(i);
+                ps = conn.prepareStatement(sqlz);
+                ps.execute();
+            }
+            
+            
+            
+            sqlz = "SELECT * FROM thanh_vien_cua_ho";
+            ps = conn.prepareStatement(sqlz);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                int tempId = rs.getInt("idNhanKhau");
+                for(int i = 0; i < hoKhauBean.getListThanhVienCuaHo().size(); i++) {
+                    if(hoKhauBean.getListThanhVienCuaHo().get(i).getIdNhanKhau() == tempId 
+                            || hoKhauBean.getListThanhVienCuaHo().get(i).getIdNhanKhau() == 0) {
+                        hoKhauBean.getListThanhVienCuaHo().remove(i);
+//                        System.out.println(hoKhauBean.getListThanhVienCuaHo().get(i).getIdNhanKhau());
+                }
+            }}
+            
+            String sql = "INSERT INTO thanh_vien_cua_ho(idNhanKhau, idHoKhau, quanHeVoiChuHo)" 
+                        + " values (?, ?, ?)";
+            hoKhauBean.getListThanhVienCuaHo().forEach((ThanhVienCuaHoModel thanhVien) -> {     
+                try { 
+                    PreparedStatement preStatement = conn.prepareStatement(sql);
+                    preStatement.setInt(1, thanhVien.getIdNhanKhau());
+                    preStatement.setInt(2, genID);
+                    preStatement.setString(3, thanhVien.getQuanHeVoiChuHo());
+                    preStatement.executeUpdate();
+                } catch (SQLException ex) {
+                    Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            });
+            
+            
+//            System.out.println(hoKhauBean.getChuHo().getID());
+            String query = "UPDATE ho_khau SET maHoKhau = ?, idChuHo = ?, maKhuVuc = ?, diaChi = ? WHERE id = " + hoKhauBean.getHoKhauModel().getID();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, hoKhauBean.getHoKhauModel().getMaHoKhau());
+            ps.setInt(2, hoKhauBean.getChuHo().getID());
+            ps.setString(3, hoKhauBean.getHoKhauModel().getMaKhuVuc());
+            ps.setString(4, hoKhauBean.getHoKhauModel().getDiaChi());
+            ps.execute();
+            
+            ps.close();
+            conn.close();
+        
+          
+            return true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(HoKhauService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
+    
 }

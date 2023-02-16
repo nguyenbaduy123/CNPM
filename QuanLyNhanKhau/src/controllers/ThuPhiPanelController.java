@@ -93,7 +93,7 @@ public class ThuPhiPanelController {
 
     public void setData() {
 //        DefaultTableModel model = tableModelHoKhau.setTableHoKhau(list, COLUNMS);
-        this.list = thuPhiService.getListKhoanThu();
+//        this.list = thuPhiService.getListKhoanThu();
         DefaultTableModel model = tableModelThuPhi.setTableKhoanThu(list, COLUNMS);
         
         JTable table = new JTable(model) {

@@ -19,6 +19,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
+import views.HoKhauManagerFrame.EditHoKhauJFrame;
 import views.infoViews.InfoJframe;
 
 /**
@@ -152,6 +153,7 @@ public class HoKhauPanelController {
     
     public void delete() {
         if(this.tempId == 0) {
+            JOptionPane.showMessageDialog(parentJFrame, "Bạn cần chọn hộ khẩu để xóa", "Lỗi", JOptionPane.WARNING_MESSAGE);
             return;
         }
         if(hoKhauService.deleteHoKhau(this.tempId)) {
@@ -161,5 +163,18 @@ public class HoKhauPanelController {
     }
     
     public void edit() {
+        if(this.tempId == 0) {
+            JOptionPane.showMessageDialog(parentJFrame, "Bạn cần chọn hộ khẩu để sửa", "Lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        EditHoKhauJFrame editHoKhau = new EditHoKhauJFrame(this.parentJFrame, this.tempId);
+        editHoKhau.setLocationRelativeTo(null);
+        editHoKhau.setResizable(false);
+        editHoKhau.setVisible(true);
+//        if(hoKhauService.deleteHoKhau(this.tempId)) {
+//            JOptionPane.showMessageDialog(parentJFrame, "Đã xóa hộ khẩu thành công", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+//            this.setData();
+//        }
     }
 }

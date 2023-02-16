@@ -18,13 +18,15 @@ public class ChoosePeople extends javax.swing.JFrame {
     private JFrame parentJFrame;
     private final ChoosePeopleController controller;
     
+    private String operation;
     /**
      * Creates new form ChoosePeople
      * @param nhanKhauBean nhan khau duoc truyen vao tu frame cha
      * @param parentJframe frame cha de disable
      */
-    public ChoosePeople(NhanKhauBean nhanKhauBean, JFrame parentJframe) {
+    public ChoosePeople(NhanKhauBean nhanKhauBean, JFrame parentJframe, String operation) {
         initComponents();
+        this.operation = operation;
         this.nhanKhauBean = nhanKhauBean;
         this.parentJFrame = parentJframe;
         this.nhanKhauBeanTemp = new NhanKhauBean();
@@ -176,8 +178,13 @@ public class ChoosePeople extends javax.swing.JFrame {
         this.nhanKhauBean.setListGiaDinhModels(this.nhanKhauBeanTemp.getListGiaDinhModels());
         this.nhanKhauBean.setListTieuSuModels(this.nhanKhauBeanTemp.getListTieuSuModels());
         this.parentJFrame.setEnabled(true);
-        ThemMoiHoKhau themMoiHoKhau = (ThemMoiHoKhau)this.parentJFrame;
-        themMoiHoKhau.setDataChuHo();
+        if(this.operation.equals("add")) {      
+            ThemMoiHoKhau themMoiHoKhau = (ThemMoiHoKhau)this.parentJFrame;
+            themMoiHoKhau.setDataChuHo();
+        } else if(this.operation.equals("edit")) {
+            EditHoKhauJFrame editHoKhau = (EditHoKhauJFrame)this.parentJFrame;
+            editHoKhau.setDataChuHo();
+        }
         dispose();
     }//GEN-LAST:event_confirmBtnActionPerformed
 

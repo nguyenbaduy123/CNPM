@@ -27,14 +27,16 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private List<MemOfFamily> listMemberTemp;
     private ChangeListPeopleController controller;
     private JFrame parentJframe;
+    private String operation;
     
     /**
      * Creates new form ChangeListPeopleJframe
      * @param listMember
      * @param parentJFrame
      */
-    public ChangeListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame) {
+    public ChangeListPeopleJframe(List<MemOfFamily> listMember, JFrame parentJFrame, String operation) {
         initComponents();
+        this.operation = operation;
         this.listMember = listMember;
         this.listMemberTemp = new ArrayList<>();
         this.listMemberTemp.addAll(listMember);
@@ -175,8 +177,16 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         this.listMember.clear();
         this.listMember.addAll(this.listMemberTemp);
+        for(int i=0; i<2; i++) {
+            System.out.println(this.listMemberTemp.get(i).getThanhVienCuaHoModel().getIdNhanKhau());
+        }
+        if(this.operation.equals("add")) {
         ThemMoiHoKhau themMoiHoKhau = (ThemMoiHoKhau)this.parentJframe;
         themMoiHoKhau.setDataThanhVien();
+        } else if(this.operation.equals("edit")) {
+            EditHoKhauJFrame editHoKhau = (EditHoKhauJFrame)this.parentJframe;
+            editHoKhau.setDataThanhVien();
+        }
         close();
     }//GEN-LAST:event_saveBtnActionPerformed
 

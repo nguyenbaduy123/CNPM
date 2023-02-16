@@ -135,10 +135,11 @@ public class NopTienController {
                     int soTien = khoanThuSelected.getKhoanThuModel().getSoTien();
                     int loaiKhoanThu = khoanThuSelected.getKhoanThuModel().getLoaiKhoanThu();
                     if(loaiKhoanThu == 0) {
+                        soTienJft.setEnabled(true);
                         soTienJft.setEditable(true);
                         loaiKhoanThuJft.setText("Tự nguyện");
                     } else {
-                        soTienJft.setEnabled(true);
+                        soTienJft.setEnabled(false);
                         soTienJft.setEditable(false);
                         soTienJft.setText(Integer.toString(soTien*soNhanKhau));
                         loaiKhoanThuJft.setText("Bắt buộc");

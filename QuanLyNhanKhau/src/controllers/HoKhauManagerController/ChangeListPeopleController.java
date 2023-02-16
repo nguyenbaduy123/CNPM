@@ -242,4 +242,8 @@ public class ChangeListPeopleController {
     public void setMemJpn(JPanel memJpn) {
         this.memJpn = memJpn;
     }
+
+    public List<MemOfFamily> getListMember() {
+        return listMember;
+    }
 }

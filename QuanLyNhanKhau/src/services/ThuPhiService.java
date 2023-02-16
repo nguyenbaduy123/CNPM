@@ -164,6 +164,8 @@ public class ThuPhiService {
                 khoanThuModel.setTenKhoanThu(rs.getString(2));
                 khoanThuModel.setSoTien(rs.getInt(3));
                 khoanThuModel.setLoaiKhoanThu(rs.getInt(4)); 
+                khoanThuModel.setNgayBatDau(rs.getDate("ngayBatDau"));
+                khoanThuModel.setNgayKetThuc(rs.getDate("ngayKetThuc"));
                 list.add(temp);
             }
         } catch (SQLException ex) {
