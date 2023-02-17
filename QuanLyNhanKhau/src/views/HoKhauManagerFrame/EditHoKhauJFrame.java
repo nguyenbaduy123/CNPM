@@ -31,7 +31,7 @@ public class EditHoKhauJFrame extends javax.swing.JFrame {
     private int idTemp;
     
     private NhanKhauBean chuHo = new NhanKhauBean();
-    private List<MemOfFamily> list = new ArrayList<>();
+    private List<MemOfFamily> list;
     private final EditHoKhauController controller = new EditHoKhauController();
     private HoKhauBean hoKhauBean = new HoKhauBean();
     private HoKhauService service = new HoKhauService();
@@ -59,11 +59,6 @@ public class EditHoKhauJFrame extends javax.swing.JFrame {
         setPrevData();
         setDataThanhVien();
         setDataChuHo();
-    }
-    
-    public EditHoKhauJFrame(List<MemOfFamily> list) {
-        setPrevData();
-        this.list = list;
     }
     
     private void setPrevData() {
@@ -100,6 +95,12 @@ public class EditHoKhauJFrame extends javax.swing.JFrame {
     public void setDataThanhVien() {
         this.controller.setData(this.list, this.memTableJpn);
     }
+
+    public void setList(List<MemOfFamily> list) {
+        this.list = list;
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -441,6 +442,7 @@ public class EditHoKhauJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các thông tin bắt buộc", "Warning", JOptionPane.ERROR_MESSAGE);
         } else {
             this.hoKhauBean.setChuHo(chuHo.getNhanKhauModel());
+            this.hoKhauBean.setListThanhVienCuaHo(new ArrayList<>());
             this.list.forEach(person -> {
                 ThanhVienCuaHoModel temp = new ThanhVienCuaHoModel();
                 temp.setIdNhanKhau(person.getNhanKhau().getNhanKhauModel().getID());

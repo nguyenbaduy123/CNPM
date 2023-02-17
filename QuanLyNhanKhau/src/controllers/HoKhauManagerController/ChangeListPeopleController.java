@@ -132,6 +132,13 @@ public class ChangeListPeopleController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 listMember.remove(memSelected);
+                
+                for(int i = 0; i < listMember.size(); i++) {
+                    if(listMember.get(i).getNhanKhau().getNhanKhauModel().getID() == memSelected.getNhanKhau().getNhanKhauModel().getID()){
+                        listMember.remove(i);
+                    }
+                }
+                
                 setData();
             }
             

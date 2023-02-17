@@ -43,6 +43,7 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
         this.parentJframe = parentJFrame;
         this.controller = new ChangeListPeopleController(this.listMemberTemp, addBtn, removeBtn, jTextField1, PeopleTableJpn, MemTableJpn);
         this.parentJframe.setEnabled(false);
+        
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -175,16 +176,25 @@ public class ChangeListPeopleJframe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        this.listMember.clear();
-        this.listMember.addAll(this.listMemberTemp);
-        for(int i=0; i<2; i++) {
-            System.out.println(this.listMemberTemp.get(i).getThanhVienCuaHoModel().getIdNhanKhau());
-        }
+        
+//        for(int i=0; i<this.listMember.size(); i++) {
+//            System.out.println(this.listMemberTemp.get(i).getNhanKhau().getNhanKhauModel().getID());
+//        }
         if(this.operation.equals("add")) {
-        ThemMoiHoKhau themMoiHoKhau = (ThemMoiHoKhau)this.parentJframe;
-        themMoiHoKhau.setDataThanhVien();
+            this.listMember.clear();
+            this.listMember.addAll(this.listMemberTemp);
+            ThemMoiHoKhau themMoiHoKhau = (ThemMoiHoKhau)this.parentJframe;
+            themMoiHoKhau.setDataThanhVien();
         } else if(this.operation.equals("edit")) {
+//            this.listMemberTemp.removeAll(this.listMember);
+            for(int i = 0; i < listMemberTemp.size(); i++) {
+                System.out.println(listMemberTemp.get(i).getNhanKhau().getNhanKhauModel().getID());
+            }
+//            this.listMember.clear();
+//            this.listMember.addAll(this.controller.getListMember());
             EditHoKhauJFrame editHoKhau = (EditHoKhauJFrame)this.parentJframe;
+            editHoKhau.setList(this.listMemberTemp);
+            editHoKhau.setDataChuHo();
             editHoKhau.setDataThanhVien();
         }
         close();

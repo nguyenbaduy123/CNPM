@@ -387,7 +387,8 @@ public class HoKhauService {
                 MemOfFamily mof = new MemOfFamily();
                 NhanKhauBean nhanKhau = mof.getNhanKhau();
                 ThanhVienCuaHoModel thanhVienCuaHoModel = mof.getThanhVienCuaHoModel();
-
+                    thanhVienCuaHoModel.setIdNhanKhau(rs.getInt("ID"));
+                    nhanKhau.getNhanKhauModel().setID(rs.getInt("ID"));
                     nhanKhau.getNhanKhauModel().setHoTen(rs.getString("hoTen"));
                     nhanKhau.getNhanKhauModel().setNamSinh(rs.getDate("namSinh"));
                     thanhVienCuaHoModel.setQuanHeVoiChuHo(rs.getString("quanHeVoiChuHo"));
@@ -412,7 +413,6 @@ public class HoKhauService {
             Connection conn = MysqlConnection.getMysqlConnection();
             int genID = hoKhauBean.getHoKhauModel().getID();
             
-            
             String sqlz = "SELECT * FROM thanh_vien_cua_ho WHERE idHoKhau = " + hoKhauBean.getHoKhauModel().getID();
             PreparedStatement ps = conn.prepareStatement(sqlz);
             ResultSet rs = ps.executeQuery();
@@ -430,9 +430,6 @@ public class HoKhauService {
                 }
             }
             
-//            for(int i = 0; i < hoKhauBean.getListThanhVienCuaHo().size(); i++) { 
-//                System.out.println(hoKhauBean.getListThanhVienCuaHo().get(i).getIdNhanKhau());
-//            }
             
             for(int i = 0; i < tempIds.size(); i++) {
                 sqlz = "DELETE FROM thanh_vien_cua_ho WHERE idNhanKhau = " + tempIds.get(i);
