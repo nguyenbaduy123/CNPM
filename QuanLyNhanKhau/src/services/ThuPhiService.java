@@ -16,10 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import Bean.KhoanThuBean;
 import models.KhoanThuModel;
-/**
- *
- * @author Duy
- */
+
 public class ThuPhiService {
      public List<KhoanThuBean> getListKhoanThu() {
         List<KhoanThuBean> list = new ArrayList<>();

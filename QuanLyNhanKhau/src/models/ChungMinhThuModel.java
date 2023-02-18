@@ -2,10 +2,7 @@ package models;
 
 import java.util.Date;
 
-/**
- *
- * @author Hai
- */
+
 public class ChungMinhThuModel {
     private int ID;
     private int idNhanKhau;

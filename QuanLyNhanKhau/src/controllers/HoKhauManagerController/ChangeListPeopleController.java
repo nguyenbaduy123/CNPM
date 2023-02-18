@@ -22,10 +22,7 @@ import services.HoKhauService;
 import services.NhanKhauService;
 import utility.TableModelHoKhau;
 
-/**
- *
- * @author Hai
- */
+
 public class ChangeListPeopleController {
     
     private JButton addBtn;

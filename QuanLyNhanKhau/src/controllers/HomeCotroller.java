@@ -6,10 +6,7 @@ import java.sql.ResultSet;
 import javax.swing.JLabel;
 import services.MysqlConnection;
 
-/**
- *
- * @author Hai
- */
+
 public class HomeCotroller {
     private JLabel tongNhanKhauLb;
     private JLabel tongHoKhauLb;

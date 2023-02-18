@@ -7,10 +7,7 @@ import java.sql.SQLException;
 import Bean.KhoanThuBean;
 import controllers.ThuPhiPanelController;
 import services.ThuPhiService;
-/**
- *
- * @author Duy
- */
+
 public class AddKhoanThuController {
     private ThuPhiPanelController controller = new ThuPhiPanelController();
     private KhoanThuBean khoanThuBean;

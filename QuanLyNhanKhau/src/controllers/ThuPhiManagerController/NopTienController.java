@@ -29,10 +29,7 @@ import views.infoViews.InfoJframe;
 import javax.swing.JOptionPane;
 import models.NopTienModel;
 
-/**
- *
- * @author Duy
- */
+
 public class NopTienController {
     private JTextField soCmtJtf;
     private JPanel tableTopJpn;

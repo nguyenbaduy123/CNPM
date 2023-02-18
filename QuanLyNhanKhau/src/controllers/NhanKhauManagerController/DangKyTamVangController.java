@@ -7,10 +7,7 @@ import javax.swing.JOptionPane;
 import models.TamVangModel;
 import services.MysqlConnection;
 
-/**
- *
- * @author Hai
- */
+
 public class DangKyTamVangController {
     
     public int checkCMT(String cmt) {

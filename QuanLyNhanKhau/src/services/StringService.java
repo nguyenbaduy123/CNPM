@@ -8,10 +8,7 @@ package services;
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
-/**
- *
- * @author Hai
- */
+
 public class StringService {
     
     public static String covertToString(String value) {

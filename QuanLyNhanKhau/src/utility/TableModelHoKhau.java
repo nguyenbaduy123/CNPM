@@ -6,10 +6,7 @@ import Bean.NhanKhauBean;
 import Bean.KhoanThuBean;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author Hai
- */
+
 public class TableModelHoKhau {
     public DefaultTableModel setTableNhanKhau(List<NhanKhauBean> listItem, String[] listColumn) {
         final int columns = listColumn.length;

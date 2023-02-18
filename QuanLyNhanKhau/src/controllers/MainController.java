@@ -20,10 +20,7 @@ import views.ThongKePanel;
 import views.TimKiemPanel;
 import views.ThuPhiPanel;
 
-/**
- *
- * @author Hai
- */
+
 public class MainController {
     private JFrame jfrMain;
     private JPanel root;

@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import models.KhoanThuModel;
 import models.NopTienModel;
-/**
- *
- * @author Duy
- */
+
+
 public class KhoanThuBean {
     private KhoanThuModel khoanThuModel;
     private NopTienModel nopTienModel;

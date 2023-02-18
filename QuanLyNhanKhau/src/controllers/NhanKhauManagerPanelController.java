@@ -24,10 +24,7 @@ import utility.ClassTableModel;
 import views.NhanKhauManagerFrame.EditNhanKhauJFrame;
 import views.infoViews.InfoJframe;
 
-/**
- *
- * @author Hai
- */
+
 public class NhanKhauManagerPanelController {
     
     private JPanel jpnView;

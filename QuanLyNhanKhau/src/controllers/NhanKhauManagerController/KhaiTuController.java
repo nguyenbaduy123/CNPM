@@ -8,10 +8,7 @@ import javax.swing.JOptionPane;
 import models.KhaiTuModel;
 import services.MysqlConnection;
 
-/**
- *
- * @author Hai
- */
+
 public class KhaiTuController {
     public int checkCMT(String cmt) {
         try {

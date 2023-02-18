@@ -8,10 +8,7 @@ import java.sql.Statement;
 import models.UserMoldel;
 import services.MysqlConnection;
 
-/**
- *
- * @author Hai
- */
+
 public class LoginController {
     
     public static UserMoldel currentUser = new UserMoldel();

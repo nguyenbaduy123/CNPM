@@ -6,10 +6,7 @@ package models;
 
 import java.util.Date;
 
-/**
- *
- * @author Duy
- */
+
 public class KhoanThuModel {
     private int id;
     private String tenKhoanThu;

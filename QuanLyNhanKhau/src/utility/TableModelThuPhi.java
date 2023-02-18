@@ -11,10 +11,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Duy
- */
+
 public class TableModelThuPhi {
     public DefaultTableModel setTableKhoanThu(List<KhoanThuBean> listItem, String[] listColumn) {
         final int columns = listColumn.length;

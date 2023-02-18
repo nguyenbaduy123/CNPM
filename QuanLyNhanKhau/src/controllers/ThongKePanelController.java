@@ -21,10 +21,6 @@ import services.StringService;
 import utility.ClassTableModel;
 
 
-/**
- *
- * @author Hai
- */
 public class ThongKePanelController {
     private JComboBox GenderJcb;
     private JComboBox StatusJcb;

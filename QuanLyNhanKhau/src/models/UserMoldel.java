@@ -1,9 +1,6 @@
 package models;
 
-/**
- *
- * @author Hai
- */
+
 public class UserMoldel {
     private int ID;
     private String userName;

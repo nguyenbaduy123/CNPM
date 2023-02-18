@@ -17,10 +17,7 @@ import models.GiaDinhModel;
 import models.NhanKhauModel;
 import models.TieuSuModel;
 
-/**
- *
- * @author 
- */
+
 public class NhanKhauService {
     
     /* 

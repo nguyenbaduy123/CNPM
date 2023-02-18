@@ -12,10 +12,7 @@ import javax.swing.JOptionPane;
 import models.UserMoldel;
 import services.MysqlConnection;
 
-/**
- *
- * @author Duy
- */
+
 public class SignupController {
      public static UserMoldel currentUser = new UserMoldel();
     

@@ -4,10 +4,7 @@
  */
 package models;
 
-/**
- *
- * @author Duy
- */
+
 public class NopTienModel {
     private int idNguoiNop;
     private int idKhoanThu;

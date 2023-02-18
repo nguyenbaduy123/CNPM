@@ -29,10 +29,7 @@ import views.ThuPhiManagerFrame.EditKhoanThu;
 import views.ThuPhiManagerFrame.ThongKeKhoanThu;
 import views.infoViews.InfoJframe;
 
-/**
- *
- * @author Hai
- */
+
 public class ThuPhiPanelController {
     
 //    private List<KhoanThuBean> list;

@@ -22,10 +22,7 @@ import utility.TableModelHoKhau;
 import views.HoKhauManagerFrame.EditHoKhauJFrame;
 import views.infoViews.InfoJframe;
 
-/**
- *
- * @author Hai
- */
+
 public class HoKhauPanelController {
     private List<HoKhauBean> list;
     private JTextField searchJtf;

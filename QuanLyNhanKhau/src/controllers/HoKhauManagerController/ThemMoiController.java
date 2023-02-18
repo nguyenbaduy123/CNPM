@@ -16,10 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
 
-/**
- *
- * @author Hai
- */
+
 public class ThemMoiController {
     private NhanKhauBean chuHo;
     private List<MemOfFamily> listThanhVien;
