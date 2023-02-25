@@ -28,6 +28,10 @@ import utility.TableModelHoKhau;
 import views.HoKhauManagerFrame.TachHoKhau;
 import views.infoViews.InfoJframe;
 
+/**
+ *
+ * @author Hien
+ */
 
 public class TachHoKhauController {
     private JTextField searchJtf;

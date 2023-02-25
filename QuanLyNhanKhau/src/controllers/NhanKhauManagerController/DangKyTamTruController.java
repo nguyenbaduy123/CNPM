@@ -8,6 +8,10 @@ import javax.swing.JOptionPane;
 import models.TamTruModel;
 import services.MysqlConnection;
 
+/**
+ *
+ * @author Vinh
+ */
 
 public class DangKyTamTruController {
     public int checkCMT(String cmt) {

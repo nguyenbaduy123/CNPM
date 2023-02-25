@@ -16,6 +16,10 @@ import javax.swing.table.DefaultTableModel;
 import services.HoKhauService;
 import utility.TableModelHoKhau;
 
+/**
+ *
+ * @author Hien
+ */
 
 public class ThemMoiController {
     private NhanKhauBean chuHo;

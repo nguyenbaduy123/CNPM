@@ -20,6 +20,7 @@ import java.sql.Date;
 import java.util.Vector;
 
 /**
+ * @author Vinh
  * class dieu khien hoat dong cua TieuSuJFrame
  */
 public class TieuSuController {

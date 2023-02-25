@@ -8,6 +8,10 @@ import Bean.KhoanThuBean;
 import javax.swing.JOptionPane;
 import services.ThuPhiService;
 
+/**
+ *
+ * @author Duy
+ */
 
 public class EditKhoanThuController {
     

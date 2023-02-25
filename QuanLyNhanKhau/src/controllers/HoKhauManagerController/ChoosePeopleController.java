@@ -20,6 +20,10 @@ import services.HoKhauService;
 import services.NhanKhauService;
 import utility.TableModelHoKhau;
 
+/**
+ *
+ * @author Hien
+ */
 
 public class ChoosePeopleController {
     private NhanKhauBean nhanKhauBean;

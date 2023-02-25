@@ -20,7 +20,7 @@ import services.HoKhauService;
 
 /**
  *
- * @author Duy
+ * @author Hien
  */
 public class EditHoKhauJFrame extends javax.swing.JFrame {
 

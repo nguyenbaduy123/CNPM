@@ -5,6 +5,10 @@ import javax.swing.UIManager;
 import views.LoginUI;
 import views.MainFrame;
 
+/**
+ *
+ * @author Duy
+ */
 
 public class QuanLyNhanKhau {
 

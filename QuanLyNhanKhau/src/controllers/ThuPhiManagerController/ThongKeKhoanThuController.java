@@ -20,6 +20,10 @@ import javax.swing.table.DefaultTableModel;
 import services.ThuPhiService;
 import utility.TableModelThuPhi;
 
+/**
+ *
+ * @author Duy
+ */
 
 public class ThongKeKhoanThuController {
 

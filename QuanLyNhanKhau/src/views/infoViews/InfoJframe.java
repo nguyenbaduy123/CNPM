@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Hai
+ * @author Duy
  */
 public class InfoJframe extends javax.swing.JFrame {
 

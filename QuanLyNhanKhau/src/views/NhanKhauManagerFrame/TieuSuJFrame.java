@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hai
+ * @author Vinh
  */
 public class TieuSuJFrame extends javax.swing.JFrame {
 

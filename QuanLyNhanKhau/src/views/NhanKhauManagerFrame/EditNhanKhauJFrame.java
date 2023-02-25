@@ -15,7 +15,7 @@ import services.NhanKhauService;
 
 /**
  *
- * @author Hai
+ * @author Vinh
  */
 public class EditNhanKhauJFrame extends javax.swing.JFrame {
 

@@ -8,6 +8,10 @@ import Bean.NhanKhauBean;
 import javax.swing.JOptionPane;
 import services.NhanKhauService;
 
+/**
+ *
+ * @author Vinh
+ */
 
 public class EditNhanKhauController {
     

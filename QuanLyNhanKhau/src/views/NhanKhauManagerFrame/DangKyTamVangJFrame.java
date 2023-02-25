@@ -11,7 +11,7 @@ import models.TamVangModel;
 
 /**
  *
- * @author Hai
+ * @author Vinh
  */
 public class DangKyTamVangJFrame extends javax.swing.JFrame {
 

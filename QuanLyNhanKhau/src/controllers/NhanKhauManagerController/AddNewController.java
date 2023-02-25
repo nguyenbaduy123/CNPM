@@ -11,7 +11,10 @@ import models.ChungMinhThuModel;
 import models.NhanKhauModel;
 import services.MysqlConnection;
 
-
+/**
+ *
+ * @author Vinh
+ */
 
 // lop thuc hien cac chuc nang trong giao dien them moi nhan khau
 
